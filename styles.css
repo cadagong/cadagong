@@ -72,7 +72,7 @@
     position: absolute;
     z-index: 2;    
     }
-    .sidenav {
+    #mySidenav {
         height: 10%; 
         width: 50%; 
         position: fixed; 
@@ -89,20 +89,35 @@
     .buttons {        
         cursor: pointer;                              
         font-size: 200%;   
-        top: 10%;       
+        top: 10%;  
+        transition: 0.5s;  
+        position: absolute;   
+        top: 0%;
+        font-size: 3vmax;        
     }  
-    #animals {
-        position: absolute;
-        top: 19%;
-        left: 10%;    
-        transition: 0.5s;           
+    #animals {        
+        left: 8%;                              
     } 
-    #faces {
-        position: absolute;
-        left: 20%; 
-        top: 19%;
-        transition: 0.5s;       
+    #faces {        
+        left: 21%;                                
     }
+    #clothes {                
+        left: 34%;     
+        top: 7%;    
+        font-size: 2.8vmax;               
+    }
+    #food {                
+        left: 47%;        
+    }
+    #travel {
+        left: 60%;  
+        top: 6%;          
+        font-size: 2.8vmax;
+    }
+    #mystery {
+        left: 73%;               
+    }
+
     #arrow {
         position: absolute;        
         left: 35%;
@@ -116,13 +131,13 @@
         top: 0%;
         left: 90%;
         z-index: 3;        
-        background-color: lightyellow;
+        background-color: lightslategray;
         border: 2px solid black;
         border-radius: 0px 0px 6px 0px;        
         border-top: none;
         transition: 0.5s;  
         cursor: pointer;
-        z-index: 2;      
+        z-index: 5;      
     }
    
                                                      

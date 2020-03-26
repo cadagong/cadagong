@@ -1,13 +1,6 @@
 //////////////////
 //GLOBAL VARIABLES
 //////////////////
-let emojis = ['🐩', '🐈', '🐖', '🐄', '🐎', '🐑', '🦆', '🐥', '🐓', '🦃',
-    '🦉', '🐀', '🐬', '🦜', '🐒', '🐺', '🦁', '🐸', '🐍', '🦇', '🐝', '🦅',
-    '🐗', '🦟', '🦗', '🦀', '🐠', '🐊', '🐅', '🐳', '🐪', '🦏', '🐐', '😀', '😁',
-    '😬', '😰', '😱', '🥵', '🥶', '😳', '🤪', '😵', '😡', '😠', '🤬', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '😇', '🤠', '🤡',
-    '🥳', '🥴', '🥺', '🤥', '🤫', '🤭', '🧐', '🤓', '😈', '👿', '👹', '👺', '💀', '👻', '👽', '🤖', '💩', '😺', '😸', '😹',
-    '😻', '😼', '😽', '🙀', '😿', '😾'
-];
 
 let animalEmojis = ['🐩', '🐈', '🐖', '🐄', '🐎', '🐑', '🦆', '🐥', '🐓', '🦃',
 '🦉', '🐀', '🐬', '🦜', '🐒', '🐺', '🦁', '🐸', '🐍', '🦇', '🐝', '🦅',
@@ -19,6 +12,29 @@ let faceEmojis = ['😀', '😁','😬', '😰', '😱', '🥵', '🥶', '😳',
 '🥳', '🥴', '🥺', '🤥', '🤫', '🤭', '🧐', '🤓', '😈', '👿', '👹', '👺', '💀', 
 '👻', '👽', '🤖', '💩', '😺', '😸', '😹','😻', '😼', '😽', '🙀', '😿', '😾'
 ];
+
+let clothesEmojis = ['🧥', '👚', '👕','👖', '👔', '👗', '👙', '👘', '👠', '👡', 
+'👢', '👞', '👟', '🥾', '🥿', '🧦', '🧤', '🧣', '🎩','🧢', '👒', '🎓', '⛑', '👑', '👝', 
+'👛', '👜', '💼', '🎒', '👓', '🕶', '🥽', '🥼', '🌂', '🧵', '🧶'
+];
+
+let foodEmojis = ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥭','🥥',
+    '🥝','🍅','🍆','🥑','🥦','🥒','🥬','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🥯','🧀','🥚',
+    '🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🌮','🌯','🥗','🥘','🥫','🍝','🍜',
+    '🍲','🍛','🍣','🍱','🥟','🍤','🍙','🍚','🍘','🍥','🥮','🥠','🍢','🍡','🍧','🍨','🍦','🥧','🍰',
+    '🎂','🍮','🍭','🍬','🍫','🍿','🧂','🍩','🍪','🌰','🥜','🍯','🥛','🍼','☕️','🍵','🥤','🍶','🍺','🍻',
+    '🥂','🍷','🥃','🍸','🍹','🍾','🥄','🍴','🍽','🥣','🥡','🥢'
+];
+
+let travelEmojis = [ '🚗','🚕','🚙','🚌','🚎','🏎','🚓','🚑','🚒','🚐','🚚','🚛','🚜','🛴','🚲','🛵',
+'🏍','🚨','🚔','🚍','🚘','🚖','🚡','🚠','🚟','🚃','🚋','🚞','🚝','🚄','🚅','🚈','🚂','🚆','🚇','🚊',
+'🚉','✈️','🛫','🛬','🛩','💺','🛰','🚀','🛸','🚁','🛶','⛵️','🚤','🛥','🛳','⛴','🚢','⚓️','⛽️','🚧','🚦',
+'🚥','🚏','🗺','🗿','🗽','🗼','🏰','🏯','🏟','🎡','🎢','🎠','⛲️','⛱','🏖','🏝','🏜','🌋','⛰','🏔','🗻',
+'🏕','⛺️','🏠','🏡','🏘','🏚','🏗','🏭','🏢','🏬','🏣','🏤','🏥','🏦','🏨','🏪','🏫','🏩','💒','🏛',
+'⛪️','🕌','🕍','🕋','⛩','🛤','🛣','🗾','🎑','🏞','🌅','🌄','🌠','🎇','🎆','🌇','🌆','🏙','🌃','🌌','🌉','🌁'    
+];
+
+let emojis = animalEmojis.concat(faceEmojis.concat(clothesEmojis.concat(foodEmojis.concat(travelEmojis))));
 
 let selectedEmojis = emojis;
 
@@ -176,18 +192,6 @@ function setEmojiToFind(waldoEmoji) {
 }
 
 
-
-function setToAnimalEmojis() {
-    selectedEmojis = animalEmojis;
-    resetPage();
-}
-
-function setToFaceEmojis() {
-    selectedEmojis = faceEmojis;
-    resetPage();
-}
-
-
 //populate page with random emojis
 function populatePage() {
     //emoji under magnifying glass
@@ -214,21 +218,50 @@ populatePage();
 
 
 
+function setToAnimalEmojis() {
+    selectedEmojis = animalEmojis;
+    resetPage();
+}
+
+function setToFaceEmojis() {
+    selectedEmojis = faceEmojis;
+    resetPage();
+}
+
+function setToClothesEmojis() {
+    selectedEmojis = clothesEmojis;
+    resetPage();
+}
+
+function setToFoodEmojis() {
+    selectedEmojis = foodEmojis;
+    resetPage();
+}
+
+function setToTravelEmojis() {
+    selectedEmojis = travelEmojis;
+    resetPage();
+}
+
+function setToAllEmojis() {
+    selectedEmojis = emojis;
+    resetPage();
+}
+
+
 // Set the width of the side navigation to 26%
 function openNav() {    
     document.getElementById('menu-btn').style.height = '400%';                                        
     document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 6px'; 
     document.getElementById("arrow").textContent = '⮭';
-    document.getElementById("arrow").style.top = '80%';
-    document.getElementById("arrow").style.height = '20%';    
+    document.getElementById("arrow").style.top = '78%';    
     document.getElementById("menu-btn").onclick = closeNav;  
   }
   
   //Set the width of the side navigation to 5%
   function closeNav() {        
     document.getElementById("arrow").textContent = '⮯';
-    document.getElementById("arrow").style.top = '20%';
-    document.getElementById("arrow").style.height = '100%';
+    document.getElementById("arrow").style.top = '20%';    
     document.getElementById('menu-btn').style.height = '100%';  
     document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 0px';    
     document.getElementById("menu-btn").onclick = openNav;                            
