@@ -16,18 +16,26 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div class='container'>
-        <p id='waldo-emoji';></p>
-        <p id='find'>🔍</p>
-        <audio id="audio" src="sounds/ding.mp3"></audio>
-        <audio id='trumpet' src='sounds/trumpet.mp3'></audio>
-        </div>
-        <div id="box"></div>
-        <div id="magnifying-background"></div>
-        <div id="meter">            
-        <span id="progress"></span>            
-        </div>
-        <canvas id="my-canvas"></canvas>
+        <div class='container'>            
+            <p id='waldo-emoji';></p>
+            <p id='find'>🔍</p>
+            <audio id="audio" src="sounds/ding.mp3"></audio>
+            <audio id='trumpet' src='sounds/trumpet.mp3'></audio>            
+            <div id="box"></div>
+            <div id="magnifying-background"></div>
+            <div id="meter">            
+                <span id="progress"></span>            
+            </div>
+            <canvas id="my-canvas"></canvas>
+        </div>                                            
+        <div id="mySidenav" class="sidenav">                        
+            <div class="buttons" id="animals" onclick="setToAnimalEmojis()" >🐈</div>               
+            <div class="buttons" id="faces" onclick="setToFaceEmojis()" >😀</div>            
+            <span id="menu-btn" onmouseover="openNav()" onmouseout="closeNav()">                 
+                <div class="buttons" id="arrow">⮯</div> 
+            </span>                                    
+        </div>   
+             
         <script src="confetti-js-master/dist/index.min.js"></script>
         <script src="scourhour.js"></script>
     </body>

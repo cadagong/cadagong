@@ -9,6 +9,19 @@ let emojis = ['🐩', '🐈', '🐖', '🐄', '🐎', '🐑', '🦆', '🐥', '�
     '😻', '😼', '😽', '🙀', '😿', '😾'
 ];
 
+let animalEmojis = ['🐩', '🐈', '🐖', '🐄', '🐎', '🐑', '🦆', '🐥', '🐓', '🦃',
+'🦉', '🐀', '🐬', '🦜', '🐒', '🐺', '🦁', '🐸', '🐍', '🦇', '🐝', '🦅',
+'🐗', '🦟', '🦗', '🦀', '🐠', '🐊', '🐅', '🐳', '🐪', '🦏', '🐐'
+];
+
+let faceEmojis = ['😀', '😁','😬', '😰', '😱', '🥵', '🥶', '😳', '🤪', '😵',
+ '😡', '😠', '🤬', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '😇', '🤠', '🤡',
+'🥳', '🥴', '🥺', '🤥', '🤫', '🤭', '🧐', '🤓', '😈', '👿', '👹', '👺', '💀', 
+'👻', '👽', '🤖', '💩', '😺', '😸', '😹','😻', '😼', '😽', '🙀', '😿', '😾'
+];
+
+let selectedEmojis = emojis;
+
 let progressBar = document.getElementById('progress');
 let progressBarStart = -5; //gets incremented with each time "waldo" is found
 let progressBarEnd = 0; //gets incremented with each time "waldo" is found   
@@ -73,8 +86,8 @@ function bgChange() {
 
 //return random emoji
 function getRandEmoji() {
-    let emojiCell = randomNum(emojis.length);
-    let emoji = emojis[emojiCell];
+    let emojiCell = randomNum(selectedEmojis.length);
+    let emoji = selectedEmojis[emojiCell];
     return emoji;
 }
 
@@ -112,8 +125,7 @@ function releaseConfetti() {
 //resets page after emoji is found
 function resetPage() {
     box.style.backgroundColor = 'lightyellow';
-    document.body.style.backgroundColor = bgChange();
-    numberOfEmojis += 10; //increase difficulty
+    document.body.style.backgroundColor = bgChange();    
     while (document.getElementsByClassName('emoji-class')[0]) {
         document.getElementsByClassName('emoji-class')[0].remove();
     }
@@ -148,7 +160,8 @@ function setEmojiToFind(waldoEmoji) {
         setProgressBar();
         if (progressBarEnd >= 100) { win(); return; }       
         //add found "waldo" emoji back into emojis array
-        emojis.push(waldoEmoji.emoji);
+        selectedEmojis.push(waldoEmoji.emoji);
+        numberOfEmojis += 10; //increase difficulty
         box.style.backgroundColor = 'palegreen';
         let audio = document.getElementById("audio");
         audio.play(); //play "ding" sounds
@@ -163,6 +176,18 @@ function setEmojiToFind(waldoEmoji) {
 }
 
 
+
+function setToAnimalEmojis() {
+    selectedEmojis = animalEmojis;
+    resetPage();
+}
+
+function setToFaceEmojis() {
+    selectedEmojis = faceEmojis;
+    resetPage();
+}
+
+
 //populate page with random emojis
 function populatePage() {
     //emoji under magnifying glass
@@ -170,9 +195,9 @@ function populatePage() {
     setEmojiToFind(waldoEmoji);
 
     //remove emoji to be found from emojis array
-    for (i = 0; i < emojis.length; i++) {
-        if (waldoEmoji.emoji == emojis[i]) {
-            emojis.splice(i, 1);
+    for (i = 0; i < selectedEmojis.length; i++) {
+        if (waldoEmoji.emoji == selectedEmojis[i]) {
+            selectedEmojis.splice(i, 1);
         }
     }
     //generate emojis from remaining emojis 
@@ -185,3 +210,26 @@ function populatePage() {
 
 
 populatePage();
+
+
+
+
+// Set the width of the side navigation to 26%
+function openNav() {    
+    document.getElementById('menu-btn').style.height = '400%';                                        
+    document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 6px'; 
+    document.getElementById("arrow").textContent = '⮭';
+    document.getElementById("arrow").style.top = '80%';
+    document.getElementById("arrow").style.height = '20%';    
+    document.getElementById("menu-btn").onclick = closeNav;  
+  }
+  
+  //Set the width of the side navigation to 5%
+  function closeNav() {        
+    document.getElementById("arrow").textContent = '⮯';
+    document.getElementById("arrow").style.top = '20%';
+    document.getElementById("arrow").style.height = '100%';
+    document.getElementById('menu-btn').style.height = '100%';  
+    document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 0px';    
+    document.getElementById("menu-btn").onclick = openNav;                            
+  }
