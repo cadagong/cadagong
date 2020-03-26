@@ -95,8 +95,8 @@ function getRandEmoji() {
 //updates progress bar
 function setProgressBar() {
     resetAnimation();
-    progressBarStart += 50;
-    progressBarEnd += 50;
+    progressBarStart += 5;
+    progressBarEnd += 5;
     progressBar.style.setProperty('--height0', progressBarStart + '%')
     progressBar.style.setProperty('--height100', progressBarEnd + '%')
 
