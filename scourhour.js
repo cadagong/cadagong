@@ -293,7 +293,7 @@ function setProgressBar() {
 let prevStress;
 function setStressBar(stress) {
     let stressBar = document.getElementById("stress")         
-    stressBar.style.setProperty('height', (stress*7) +"%");    
+    stressBar.style.setProperty('height', (stress) +"%");    
     prevStress = stress;
 }
 
@@ -320,7 +320,10 @@ function mouseTracker(e) {
     var x2 = e.clientX;
     var y2 = e.clientY;   
     
-    stress = Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5) 
+    stress = 7*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5)) 
+    if(stress > 100) {
+        stress = 100;
+    }
     if(prevStress == null) {
         prevStress = 0;
     }

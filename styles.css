@@ -1,12 +1,12 @@
     p {
-    font-size: 4vmax;            
-    margin: 0;
-    display: flex;
-    position: absolute;
+        font-size: 4vmax;            
+        margin: 0;
+        display: flex;
+        position: absolute;
     }          
     #find {
-    opacity: 50%;
-    font-size: 9.5vmax;                      
+        opacity: 50%;
+        font-size: 9.5vmax;                      
     }   
     #box {
         position: relative; 
@@ -33,15 +33,15 @@
     }
 
     #meter3 {
-    position: fixed;
-    left: 13vmin;
-    top: 29vmin;
-    width: 8.5vmin;
-    height: 67%;
-    background-color: lightyellow;
-    overflow: hidden;
-    border-radius: 25px;
-    border: 3px solid black;            
+        position: fixed;
+        left: 13vmin;
+        top: 29vmin;
+        width: 8.5vmin;
+        height: 67%;
+        background-color: lightyellow;
+        overflow: hidden;
+        border-radius: 25px;
+        border: 3px solid black;            
     }   
     #countdown {    
         height: 100%;
