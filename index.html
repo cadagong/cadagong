@@ -8,46 +8,54 @@
    6) optimize for different device dimensions
    7) Add more things to to-do list
     -->
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>ScourHour</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <div class='container buttons'>            
-            <p id='waldo-emoji';></p>
-            <p id='find'>🔍</p>
-            <audio id="audio" src="sounds/ding.mp3"></audio>
-            <audio id='trumpet' src='sounds/trumpet.mp3'></audio>            
-            <div id="box"></div>
-            <div id="magnifying-background"></div>
-            <div id="meter">            
-                <span id="progress"></span>            
-            </div>
-            <div id="meter2">            
-                <span id="progress"></span>            
-            </div>
-            <div id="meter3">            
-                <span id="progress"></span>            
-            </div>
-            <canvas id="my-canvas"></canvas>
-        </div>                                            
-        <div id="mySidenav">                        
-            <div class="buttons" id="animals" onclick="setToAnimalEmojis()" >🐒</div>               
-            <div class="buttons" id="faces" onclick="setToFaceEmojis()" >😀</div>            
-            <div class="buttons" id="clothes" onclick="setToClothesEmojis()" >👕</div>
-            <div class="buttons" id="food" onclick="setToFoodEmojis()" >🍕</div>
-            <div class="buttons" id="travel" onclick="setToTravelEmojis()" >🚀</div>
-            <div class="buttons" id="mystery" onclick="setToAllEmojis()">� </div>
-            <span id="menu-btn" onmouseover="openNav()" onmouseout="closeNav()">                 
-                <div class="buttons" id="arrow">⮯</div> 
-            </span>                                    
-        </div>   
-             
-        <script src="confetti-js-master/dist/index.min.js"></script>
-        <script src="scourhour.js"></script>
-    </body>
-</html>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>ScourHour</title>
+            <link rel="stylesheet" href="styles.css">            
+        </head>
+        <body>
+            <img src="./images/ceno-logo.jpg" id="ceno">                        
+            <div id="mouse-box">                            
+
+                <canvas id="my-canvas"></canvas>
+                
+                <div class='container buttons'>    
+
+                    <p id='waldo-emoji';></p>
+                    <div id="magnifying-background"></div>
+                    <p id='find'>🔍</p>
+                    <audio id="audio" src="sounds/ding.mp3"></audio>
+                    <audio id='trumpet' src='sounds/trumpet.mp3'></audio>            
+                    <div id="box"></div>  
+
+                    <div id="meter">            
+                        <span id="progress"></span>            
+                    </div>
+                    <div id="meter2">            
+                        <span id="stress"></span>            
+                    </div>
+                    <div id="meter3">            
+                        <span id="countdown"></span>            
+                    </div>   
+
+                </div>       
+
+                <div id="mySidenav">                        
+                    <div class="buttons" id="animals" onclick="setToAnimalEmojis()" >🐒</div>               
+                    <div class="buttons" id="faces" onclick="setToFaceEmojis()" >😀</div>            
+                    <div class="buttons" id="clothes" onclick="setToClothesEmojis()" >👕</div>
+                    <div class="buttons" id="food" onclick="setToFoodEmojis()" >🍕</div>
+                    <div class="buttons" id="travel" onclick="setToTravelEmojis()" >🚀</div>
+                    <div class="buttons" id="mystery" onclick="setToAllEmojis()">�</div>
+                    <span id="menu-btn" onmouseover="openNav()" onmouseout="closeNav()">                 
+                        <div class="buttons" id="arrow">⮯</div> 
+                    </span>                                    
+                </div> 
+
+            </div>                   
+            <script src="confetti-js-master/dist/index.min.js"></script>
+            <script src="scourhour.js"></script>
+        </body>
+    </html>

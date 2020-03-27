@@ -1,135 +1,109 @@
-1    tag - perspective   
- 2   #id - distinct
-  3  .class - additive
-
-
-
-
     p {
     font-size: 4vmax;            
     margin: 0;
     display: flex;
     position: absolute;
-    }    
-    .container-all {
-        opacity: 100;
-    }    
+    }          
     #find {
     opacity: 50%;
     font-size: 9.5vmax;                      
+    }   
+    #box {
+        position: relative; 
+        left: 140px; 
+        top: 180px;             
+        width: 1190px; 
+        height: 420px; 
+        border-radius: 25px;
+        transition: 6s;        
     }
     #waldo-emoji {
-    left: 38px;
-    top: 40px;
-    }
-    #box {
-    position: relative; 
-    left: 140px; 
-    top: 180px;             
-    width: 1190px; 
-    height: 420px; 
-    border-radius: 25px;
-    transition: 1s;
+        left: 5vmin;
+        top: 4.5vmin;
     }
     #magnifying-background {
-    position: absolute; 
-    background-color: whitesmoke;
-    z-index: -1; 
-    border-radius: 50px; 
-    left: 29px; 
-    top: 35px; 
-    width: 90px; 
-    height: 90px;
+        position: absolute; 
+        background-color: whitesmoke;
+        z-index: -1; 
+        border-radius: 50px; 
+        left: 3.5vmin; 
+        top: 4.2vmin; 
+        width: 90px; 
+        height: 90px;
     }
 
     #meter3 {
     position: fixed;
-    left: 120px;
-    top: 186px;
-    width: 6%;
+    left: 13vmin;
+    top: 29vmin;
+    width: 8.5vmin;
     height: 67%;
     background-color: lightyellow;
     overflow: hidden;
     border-radius: 25px;
     border: 3px solid black;            
     }   
-    #meter3 span {
-    display: block;
-    height: 50%;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #d6185e;
-    border-radius: 3px 3px;
-    animation: progressbar 1s ease-in-out;
-    animation-fill-mode: forwards;    
-    --height0: 0%;
-    --height100: 0%;
-    }       
-
-    #meter2 {
-    position: fixed;
-    left: 210px;
-    top: 186px;
-    width: 6%;
-    height: 67%;
-    background-color: lightyellow;
-    overflow: hidden;
-    border-radius: 25px;
-    border: 3px solid black;            
-    }   
-    #meter2 span {
-    display: block;
-    height: 50%;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #d6185e;
-    border-radius: 3px 3px;
-    animation: progressbar 1s ease-in-out;
-    animation-fill-mode: forwards;    
-    --height0: 0%;
-    --height100: 0%;
-    }       
-
-    #meter {
-    position: fixed;
-    left: 30px;
-    top: 186px;
-    width: 6%;
-    height: 67%;
-    background-color: lightyellow;
-    overflow: hidden;
-    border-radius: 25px;
-    border: 3px solid black;            
-    }   
-    #meter span {
-    display: block;
-    height: 50%;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #d6185e;
-    border-radius: 3px 3px;
-    animation: progressbar 1s ease-in-out;
-    animation-fill-mode: forwards;    
-    --height0: 0%;
-    --height100: 0%;
+    #countdown {    
+        height: 100%;
+        width: 100%;
+        bottom: 0;
+        position: absolute;        
+        background-color: #ecbb19;
+        animation: progressbar 6s ease-in-out;
+        animation-duration: 60s;
+        animation-fill-mode: forwards;    
+        --height0: 0%;
+        --height100: 100%;
     }             
     @keyframes progressbar {
-    0% {
-    height: var(--height0);
+        from {
+        height: var(--height100);
+        }
+        to {
+        height: var(--height0);
+        } 
     }
-    100% {
-    height: var(--height100);
-    }
-    }
-    #my-canvas {
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    z-index: 2;    
-    }
+
+    #meter2 {
+        position: fixed;
+        left: 3vmin;
+        top: 29vmin;
+        width: 8.5vmin;
+        height: 67%;
+        background-color: lightyellow;
+        overflow: hidden;
+        border-radius: 25px;
+        border: 3px solid black;  
+        transition: 0.5s;            
+    }   
+    #stress{
+        display: block;
+        height: 0%;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #4c07bb;                
+        transition: 2s;                
+    }      
+    #meter {
+        position: fixed;
+        left: 30vmin;
+        top: 22vmin;
+        width: 175vmin;
+        height: 5vmin;
+        background-color: lightyellow;
+        overflow: hidden;
+        border-radius: 25px;
+        border: 3px solid black;            
+    }   
+    #progress {
+        display: block;
+        height: 100%;
+        position: absolute;         
+        background-color: #d6185e;                      
+        width: 0%;
+        transition: 1s;
+    }                
     #mySidenav {
         height: 10%; 
         width: 50%; 
@@ -151,7 +125,9 @@
         transition: 0.5s;  
         position: absolute;   
         top: 0%;
-        font-size: 3vmax;        
+        font-size: 3vmax; 
+        height: 0vmin;       
+        width: 0vmin;
     }  
     #animals {        
         left: 8%;                              
@@ -196,6 +172,32 @@
         transition: 0.5s;  
         cursor: pointer;
         z-index: 5;      
+    }
+
+    #ceno {
+        right: 10vmin;
+        top: 0vmin;
+        float: right;
+        border-radius: 0vmin 0vmin 1vmin 1vmin;
+        width: 30vmin;        
+        height: 10.3vmin;
+        position: absolute;
+        border: 2px solid black;
+        border-top: none;        
+    }
+
+    #mouse-box {
+        width: 214vmin;
+        height: 96vmin;
+        border: 3px solid black; 
+        z-index: 100000;  
+        border-radius: 0.7vmin;                    
+    }
+
+    #my-canvas {       
+        left: 0vmin;
+        top: 0vmin;                
+        z-index: 5000;
     }
    
                                                      
