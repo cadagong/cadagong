@@ -3,22 +3,41 @@
     <head>
         <meta charset="utf-8">
         <title>ScourHour</title>
-        <link rel="stylesheet" href="styles.css">            
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="./images/Favicon.png" type="image/png">
+	<link rel="apple-touch-icon" href="./images/Favicon.png" type="image/png">          
     </head>
-    <body>
-        <img src="./images/ceno-logo.jpg" id="ceno">                        
-        <div id="mouse-box">                            
+
+    <body style="margin: 0;">
+        <div class = "mouse box" id = "mousebox" >
+     		   <img src="./images/ceno-logo.jpg" id="ceno">                 
+        </div>
+        <div id="mySidenav" >                        
+            <div class="buttons" id="animals" onclick="setToAnimalEmojis()" >
+            🐒</div>               
+            <div class="buttons" id="faces" onclick="setToFaceEmojis()" >😀</div>            
+            <div class="buttons" id="clothes" onclick="setToClothesEmojis()" >👕		</div>
+            <div class="buttons" id="food" onclick="setToFoodEmojis()" >🍕</div>
+            <div class="buttons" id="travel" onclick="setToTravelEmojis()" >🚀</div>
+            <div class="buttons" id="mystery" onclick="setToAllEmojis()">�</div>
+ <!--            <span id="menu-btn" onmouseover="openNav()" onmouseout="closeNav()">                 
+                <div class="buttons" id="arrow">⮯</div> 
+            </span>      -->                               
+        </div> 
+        <div>
 
             <canvas id="my-canvas"></canvas>
             
-            <div class='container buttons'>    
+            <div class='buttons container'>    
 
                 <p id='waldo-emoji';></p>
                 <div id="magnifying-background"></div>
                 <p id='find'>🔍</p>
                 <audio id="audio" src="sounds/ding.mp3"></audio>
-                <audio id='trumpet' src='sounds/trumpet.mp3'></audio>            
-                <div id="box"></div>  
+                <audio id='trumpet' src='sounds/trumpet.mp3'></audio> 
+
 
                 <div id="meter">            
                     <span id="progress"></span>            
@@ -26,23 +45,13 @@
                 <div id="meter2">            
                     <span id="stress"></span>            
                 </div>
-                <div id="meter3">            
+                <div class="meter3">            
                     <span id="countdown"></span>            
                 </div>   
 
             </div>       
+            	<div id="box"></div>  
 
-            <div id="mySidenav">                        
-                <div class="buttons" id="animals" onclick="setToAnimalEmojis()" >🐒</div>               
-                <div class="buttons" id="faces" onclick="setToFaceEmojis()" >😀</div>            
-                <div class="buttons" id="clothes" onclick="setToClothesEmojis()" >👕</div>
-                <div class="buttons" id="food" onclick="setToFoodEmojis()" >🍕</div>
-                <div class="buttons" id="travel" onclick="setToTravelEmojis()" >🚀</div>
-                <div class="buttons" id="mystery" onclick="setToAllEmojis()">�</div>
-                <span id="menu-btn" onmouseover="openNav()" onmouseout="closeNav()">                 
-                    <div class="buttons" id="arrow">⮯</div> 
-                </span>                                    
-            </div> 
 
         </div>                   
         <script src="confetti-js-master/dist/index.min.js"></script>

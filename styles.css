@@ -1,3 +1,41 @@
+    #mySidenav {
+        height: 7.5vmin; 
+        position: fixed; 
+        top: 1vmin; 
+
+        left: calc(76.35vw - 6.35vmin - 40vw + 22vw );
+
+        width: calc(40vw);
+        
+        border: 1vmin solid black;
+ 
+        border-radius: 0px 0px 6px 6px;                        
+        transition: 0.5s;            
+        background-color: lightyellow; 
+        z-index: 5;    
+      } 
+    #ceno {
+        left: 22vw;
+        border-radius: 0vmin 0vmin 0vmin 1vmin;
+        top: 1vmin;
+        width: auto;        
+        height: 7.5vmin;
+        position: fixed;
+        border: 1vmin solid black;
+                transition: 0.5s; 
+      
+        z-index: -10;
+    }
+
+    .mouse {
+        position: fixed;
+        width: calc(100vw - 4vmin);
+        height: calc(100vh - 4vmin);
+        margin: 1vmin;
+        border: 1vmin solid black; 
+        border-radius: 0.7vmin;
+        z-index: -8;          
+    }
     p {
         font-size: 4vmax;            
         margin: 0;
@@ -6,42 +44,104 @@
     }          
     #find {
         opacity: 50%;
-        font-size: 9.5vmax;                      
+        font-size: 9vmax;                      
     }   
     #box {
-        position: relative; 
-        left: 140px; 
-        top: 180px;             
-        width: 1190px; 
-        height: 420px; 
-        border-radius: 25px;
-        transition: 6s;        
+        position: fixed; 
+
+        left: 22vw;     
+        width: calc(76.35vw - 6.35vmin);
+        top: 15.5vmin; 
+        height: calc(100vh - 18.5vmin); 
+        border-radius: 1vmin 0vmin 0vmin 0vmin;
+        transition: 0.5s; 
+        z-index: 5;    
+        border: 1vmin solid black;
     }
     #waldo-emoji {
-        left: 5vmin;
-        top: 4.5vmin;
+        left: 40%;
+        top: 40%;
     }
     #magnifying-background {
         position: absolute; 
         background-color: whitesmoke;
-        z-index: -1; 
-        border-radius: 50px; 
-        left: 3.5vmin; 
-        top: 4.2vmin; 
-        width: 90px; 
-        height: 90px;
+        z-index: -10; 
+        border-radius: 3vmax; 
+        left: 37%; 
+        top: 35%; 
+        width: 125%; 
+        height: 125%;
     }
 
-    #meter3 {
+    .buttons {        
+        cursor: pointer; 
+        transition: 0.1s;  
+        position: absolute;   
+        top: -1vmin;
+        font-size: 6.5vmin; 
+        z-index: 10;
+    }  
+    #animals {        
+        left: 0%;                              
+    } 
+    #faces {        
+        left: 18%;                                
+    }
+    #clothes {                
+        left: 36%;                
+    }
+    #food {                
+        left: 54%;        
+    }
+    #travel {
+        left: 72%;      
+    }
+    #mystery {
+        left: 90%;               
+    }
+/*
+    #arrow {        
+        left: 25%; 
+        transition: 0.5s;       
+    }
+
+    #menu-btn {        
+        height: 100%;                    
+        width: 10%;
+        position: absolute;
+        top: 0%;
+        left: 90%;  
+        background-color: lightslategray;
+        border: 1vmin solid black;
+        transition: 0.5s;  
+        cursor: pointer;
+        z-index: 5;      
+    }*/
+    #meter { /* progress */
         position: fixed;
-        left: 13vmin;
-        top: 29vmin;
-        width: 8.5vmin;
-        height: 67%;
+        left: 22vw;     
+        top: 9.5vmin;
+        width: calc(76.35vw - 6.35vmin);
+        height: 5vmin;
         background-color: lightyellow;
         overflow: hidden;
-        border-radius: 25px;
-        border: 3px solid black;            
+        border-radius: 1vmin;
+        border: 1vmin solid black;
+                transition: 0.5s;
+                z-index: 5;             
+    }   
+
+    .meter3 { /* countdown */
+        position: fixed;
+        left: calc(98.7vw - 6vmin);
+        top: 1vmin;
+        width: 5.5vmin;
+        height: calc(100vh - 4vmin);
+        background-color: lightyellow;
+        overflow: hidden;
+        border-radius: 1vmin;
+        border: 1vmin solid black; 
+        z-index: 3;           
     }   
     #countdown {    
         height: 100%;
@@ -85,17 +185,6 @@
         background-color: #4c07bb;                
         transition: 2s;                
     }      
-    #meter {
-        position: fixed;
-        left: 30vmin;
-        top: 22vmin;
-        width: 175vmin;
-        height: 5vmin;
-        background-color: lightyellow;
-        overflow: hidden;
-        border-radius: 25px;
-        border: 3px solid black;            
-    }   
     #progress {
         display: block;
         height: 100%;
@@ -104,95 +193,13 @@
         width: 0%;
         transition: 1s;
     }                
-    #mySidenav {
-        height: 10%; 
-        width: 50%; 
-        position: fixed; 
-        z-index: 1; 
-        top: 0%; 
-        left: 28%; 
-        border: 2px solid black;
-        border-top: none;       
-        border-radius: 0px 0px 6px 6px;                        
-        transition: 0.5s;            
-        background-color: lightyellow; 
-        z-index: 5;    
-      }     
-    .buttons {        
-        cursor: pointer;                              
-        font-size: 200%;   
-        top: 10%;  
-        transition: 0.5s;  
-        position: absolute;   
-        top: 0%;
-        font-size: 3vmax; 
-        height: 0vmin;       
-        width: 0vmin;
-    }  
-    #animals {        
-        left: 8%;                              
-    } 
-    #faces {        
-        left: 21%;                                
-    }
-    #clothes {                
-        left: 34%;     
-        top: 7%;    
-        font-size: 2.8vmax;               
-    }
-    #food {                
-        left: 47%;        
-    }
-    #travel {
-        left: 60%;  
-        top: 6%;          
-        font-size: 2.8vmax;
-    }
-    #mystery {
-        left: 73%;               
+    .container {
+        width: 5vmax;
+        height: 5vmax;
+        left: 3vmax;
+        top: 3vmax;
     }
 
-    #arrow {
-        position: absolute;        
-        left: 35%;
-        top: 20%; 
-        transition: 0.5s;       
-    }
-    #menu-btn {        
-        height: 100%;                    
-        width: 10%;
-        position: absolute;
-        top: 0%;
-        left: 90%;
-        z-index: 3;        
-        background-color: lightslategray;
-        border: 2px solid black;
-        border-radius: 0px 0px 6px 0px;        
-        border-top: none;
-        transition: 0.5s;  
-        cursor: pointer;
-        z-index: 5;      
-    }
-
-    #ceno {
-        right: 10vmin;
-        top: 0vmin;
-        float: right;
-        border-radius: 0vmin 0vmin 1vmin 1vmin;
-        width: 30vmin;        
-        height: 10.3vmin;
-        position: absolute;
-        border: 2px solid black;
-        border-top: none;        
-    }
-
-    #mouse-box {
-        width: 214vmin;
-        height: 96vmin;
-        border: 3px solid black; 
-        z-index: 100000;  
-        border-radius: 0.7vmin;                    
-    }
 
     #my-canvas {       
         left: 0vmin;

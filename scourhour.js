@@ -62,8 +62,8 @@ let countdownTime = 20;
 class Emoji {
     constructor() {
         this.emoji = getRandEmoji();
-        this.x = randomNum(1050) + 'px';
-        this.y = randomNum(300) + 'px';
+        this.x = window.innerWidth * (randomNum(65)) * 0.01 + 'px' ;
+        this.y = window.innerHeight * (randomNum(70)) * 0.01 + 'px' ;
         this.fontSize = randomNum(5) + 2 + 'vmax';
         this.zIndex = '0';
         this.className = 'emoji-class';
@@ -172,7 +172,6 @@ function setEmojiToFind(waldoEmoji) {
 
 
 
-
 ///////////////////////////////////
 //Page reset and populate functions
 ///////////////////////////////////
@@ -249,23 +248,23 @@ function setToAllEmojis() {
 //Pull-Down Menu
 ////////////////
 
-// Set the width of the side navigation to 26%
-function openNav() {    
-    document.getElementById('menu-btn').style.height = '400%';                                        
-    document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 6px'; 
-    document.getElementById("arrow").textContent = '⮭';
-    document.getElementById("arrow").style.top = '78%';    
-    document.getElementById("menu-btn").onclick = closeNav;  
-}
+// // Set the width of the side navigation to 26%
+// function openNav() {    
+//     document.getElementById('menu-btn').style.height = '400%';                                        
+//     document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 6px'; 
+//     document.getElementById("arrow").textContent = '⮭';
+//     document.getElementById("arrow").style.top = '78%';    
+//     document.getElementById("menu-btn").onclick = closeNav;  
+// }
   
-//Set the width of the side navigation to 5%
-function closeNav() {        
-    document.getElementById("arrow").textContent = '⮯';
-    document.getElementById("arrow").style.top = '20%';    
-    document.getElementById('menu-btn').style.height = '100%';  
-    document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 0px';    
-    document.getElementById("menu-btn").onclick = openNav;                            
-}
+// //Set the width of the side navigation to 5%
+// function closeNav() {        
+//     document.getElementById("arrow").textContent = '⮯';
+//     document.getElementById("arrow").style.top = '20%';    
+//     document.getElementById('menu-btn').style.height = '100%';  
+//     document.getElementById('menu-btn').style.borderRadius = '0px 0px 6px 0px';    
+//     document.getElementById("menu-btn").onclick = openNav;                            
+// }
 
 
 
@@ -309,14 +308,19 @@ function setCountDownBar() {
 ////////////////
 //Mouse Tracking
 ////////////////
- 
+
 let x1, y1, x2, y2, stress;
-document.getElementById("box").onmousemove = function(event) {
-    mouseTracker(event)
-};
+
+
+mousebox.addEventListener('mousemove', function(event) {
+    console.log("hi",event);
+    mouseTracker(event);
+    return;
+});
+
 
 function mouseTracker(e) {
-  
+  console.log("hello",e);
     var x2 = e.clientX;
     var y2 = e.clientY;   
     
@@ -329,6 +333,6 @@ function mouseTracker(e) {
     }
     setStressBar(stress);           
         
-    x1 = x2
-    y1 = y2       
+    x1 = x2;
+    y1 = y2;      
 }
