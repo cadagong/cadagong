@@ -51,7 +51,7 @@ let allElements = document.querySelector('#emoji-class');
 let box = document.getElementById("box");
 
 document.body.style.transition = '1s';
-document.body.style.backgroundColor = bgChange();
+box.style.backgroundColor = bgChange();
 box.style.backgroundColor = 'lightyellow';
 
 let countdownTime = 20;
@@ -176,11 +176,10 @@ function setEmojiToFind(waldoEmoji) {
 //Page reset and populate functions
 ///////////////////////////////////
 
-
 //resets page after emoji is found
 function resetPage() {
     box.style.backgroundColor = 'lightyellow';
-    document.body.style.backgroundColor = bgChange(); 
+    box.style.backgroundColor = bgChange(); 
        
     while (document.getElementsByClassName('emoji-class')[0]) {
         document.getElementsByClassName('emoji-class')[0].remove();
