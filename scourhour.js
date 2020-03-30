@@ -312,17 +312,17 @@ function setCountDownBar() {
 let x1, y1, x2, y2, stress;
 
 
-mousebox.addEventListener('mousemove', function(event) {
+box.addEventListener('mousemove', function(event) {
     console.log("hi",event);
     mouseTracker(event);
     return;
 });
 
 
-function mouseTracker(e) {
-  console.log("hello",e);
-    var x2 = e.clientX;
-    var y2 = e.clientY;   
+function mouseTracker(event) {
+  console.log("hello",event);
+    var x2 = event.clientX;
+    var y2 = event.clientY;   
     
     stress = 7*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5)) 
     if(stress > 100) {
