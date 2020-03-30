@@ -2,13 +2,9 @@
         height: 7.5vmin; 
         position: fixed; 
         top: 1vmin; 
-
         left: calc(76.35vw - 6.35vmin - 40vw + 22vw );
-
         width: calc(40vw);
-        
         border: 1vmin solid black;
- 
         border-radius: 0px 0px 6px 6px;                        
         transition: 0.5s;            
         background-color: lightyellow; 
@@ -44,11 +40,12 @@
     }          
     #find {
         opacity: 50%;
-        font-size: 9vmax;                      
+        font-size: 9vmax;
+        left: 0vmin;                      
+        top: 0vmin;
     }   
     #box {
         position: fixed; 
-
         left: 22vw;     
         width: calc(76.35vw - 6.35vmin);
         top: 15.5vmin; 
@@ -66,11 +63,12 @@
         position: absolute; 
         background-color: whitesmoke;
         z-index: -10; 
-        border-radius: 3vmax; 
-        left: 37%; 
-        top: 35%; 
+        border-radius: 10vmax; 
+        left: 0vmin; 
+        top: 1.3vmin; 
         width: 125%; 
-        height: 125%;
+        height: 125%;        
+        margin: 2.7vmin 1.5vmin 2vmin 3.3vmin;
     }
 
     .buttons {        
@@ -120,22 +118,29 @@
     #meter { /* progress */
         position: fixed;
         left: 22vw;     
-        top: 9.5vmin;
+        top: 9.4vmin;
         width: calc(76.35vw - 6.35vmin);
-        height: 5vmin;
+        height: 5.6vmin;
         background-color: lightyellow;
         overflow: hidden;
         border-radius: 1vmin;
         border: 1vmin solid black;
-                transition: 0.5s;
-                z-index: 5;             
+        transition: 0.5s;
+        z-index: 5;             
     }   
-
+    #progress {
+        /*display: block;        */
+        height: 6vmin;
+        position: absolute;         
+        background-color: #d6185e;                      
+        width: 0%;
+        transition: 1s;
+    }  
     .meter3 { /* countdown */
         position: fixed;
         left: calc(98.7vw - 6vmin);
         top: 1vmin;
-        width: 5.5vmin;
+        width: 5.6vmin;
         height: calc(100vh - 4vmin);
         background-color: lightyellow;
         overflow: hidden;
@@ -164,7 +169,7 @@
         } 
     }
 
-    #meter2 {
+    #meter2 { /* stress */
         position: fixed;
         left: 3vmin;
         top: 29vmin;
@@ -184,15 +189,7 @@
         width: 100%;
         background-color: #4c07bb;                
         transition: 2s;                
-    }      
-    #progress {
-        display: block;
-        height: 100%;
-        position: absolute;         
-        background-color: #d6185e;                      
-        width: 0%;
-        transition: 1s;
-    }                
+    }                        
     .container {
         width: 5vmax;
         height: 5vmax;
