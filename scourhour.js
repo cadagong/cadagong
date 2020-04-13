@@ -133,7 +133,7 @@ function win() {
 function startTimer() {
     let countdown = setInterval( function(){ 
         setCountDownBar();
-        remainingTime = remainingTime - 5;
+        remainingTime = remainingTime - 4;
         //if timer runs out
         if(remainingTime <= 0) {  
             clearInterval(countdown);      
@@ -443,7 +443,7 @@ $('html').mousemove(function (event) {
         prevStress = 0;
     }
 
-    stress = 20*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.17))   ; 
+    stress = 30*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.17))   ;
 
     i = i+1;
     if (i < 10) {
