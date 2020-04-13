@@ -54,7 +54,6 @@ document.body.style.transition = '1s';
 box.style.backgroundColor = bgChange();
 
 let remainingTime = 100.01; //in percent
-startTimer();
 
 
 
@@ -164,9 +163,10 @@ function timerRunOut() {
         remainingTime = 100.1; 
         setCountDownBar();     
         backgroundColor = bgChange();
-        resetPage();
-        startTimer();
-        addStressBar();
+        setToStartScreen();
+        //resetPage();
+        //startTimer();
+        //addStressBar();
     }, 4000);
 
 }
@@ -276,8 +276,26 @@ function populatePage() {
     }
 }
 
+function setToStartScreen() {
+    while (document.getElementsByClassName('emoji-class')[0]) {
+        document.getElementsByClassName('emoji-class')[0].remove();
+    }
 
-populatePage();
+    let parent = document.getElementById('box');       
+    let playBtn = document.createElement("img");
+    playBtn.src = 'images/playBtn.jpg';
+    playBtn.id = 'startBtn';    
+    parent.append(playBtn);
+    $('#startBtn').mouseup(function(event) {
+        document.getElementById('startBtn').remove();
+        populatePage();
+        startTimer();
+    })
+
+}
+
+
+//populatePage();
 
 
 ////////////////////////////////
@@ -435,12 +453,26 @@ $('html').mousemove(function (event) {
     }
  
 
-
-           
-        
     x1 = x2;
     y1 = y2;  
     counter += 1;        
 });
 
 
+
+
+let bgChangeOnStart = setInterval(function() {
+    box.style.transition = '3s'
+    box.style.backgroundColor = bgChange();    
+}, 3000);
+
+
+
+$('#startBtn').mouseup(function(event) {
+    document.getElementById('startBtn').remove();
+    box.style.transition = '0.5s'
+    clearInterval(bgChangeOnStart);    
+    populatePage();
+    startTimer();
+    
+})

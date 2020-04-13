@@ -210,5 +210,10 @@
         left: 0vmax;
         top: 0vmax;
     }   
-   
+    #startBtn {
+        left: 75vmin;
+        top: 35vmin;
+        width: 10vmin;
+        position: absolute;
+    }
                                                      
