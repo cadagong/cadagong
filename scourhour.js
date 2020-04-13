@@ -54,9 +54,9 @@ document.body.style.transition = '1s';
 box.style.backgroundColor = bgChange();
 
 let remainingTime = 100.01; //in percent
-setInterval( function(){ 
-    setCountDownBar();
-}, 1000 ); 
+startTimer();
+
+
 
 
 ///////////////////////////////////////
@@ -83,6 +83,7 @@ class Emoji {
         emojiElem.style.fontSize = this.fontSize;
         emojiElem.style.position = this.position;
         emojiElem.style.zIndex = this.zIndex;
+        emojiElem.style.transition = '3s';
         setNonWaldo(emojiElem);        
         box.appendChild(emojiElem);
         return emojiElem;
@@ -129,6 +130,47 @@ function win() {
     audio.play(); //play trumpet win sound    
 }
 
+function startTimer() {
+    let countdown = setInterval( function(){ 
+        setCountDownBar();
+        remainingTime = remainingTime - 5;
+        //if timer runs out
+        if(remainingTime <= 0) {  
+            clearInterval(countdown);      
+            timerRunOut();
+        }
+    }, 1000 ); 
+}
+
+
+function timerRunOut() {
+    progressBar.style.width = '0%';
+    //progressBar.style.setProperty('width', progressBarProgress + '%');  
+    progressBarProgress = 0;
+    numberOfEmojis = 10;    
+    let audio = document.getElementById("lose");
+    audio.play(); //play "wrong" sound    
+    while (document.getElementsByClassName('emoji-class')[0]) {
+        document.getElementsByClassName('emoji-class')[0].remove();
+    }
+    while (document.getElementsByClassName('stress')[0]) {
+        document.getElementsByClassName('stress')[0].remove();
+    }
+    distanceFromLeft = 3;
+    stressBarNumber = 0;
+    setTimeout(function() {
+        audio.pause();
+        audio.currentTime = 0;  
+        remainingTime = 100.1; 
+        setCountDownBar();     
+        backgroundColor = bgChange();
+        resetPage();
+        startTimer();
+        addStressBar();
+    }, 4000);
+
+}
+
 
 
 
@@ -160,20 +202,21 @@ function setEmojiToFind(waldoEmoji) {
     let emojiToFind = new Emoji();
     emojiToFind.emoji = waldoEmoji.emoji;
     emojiToFind.zIndex = '1';
-    elementToFind = emojiToFind.generate();
-
-    //define onmouseover event for "waldo" element    
+    let elementToFind = emojiToFind.generate();
+      
     elementToFind.style.cursor = 'pointer';
+    //$('html').off('mousemove');    
     
 
     //define onclick event when "waldo" is found
     elementToFind.onclick = function(e) {
         setProgressBar(10);         
-        addStressBar();
+        addStressBar();        
         remainingTime += 10;
         if(remainingTime >= 100.01) {
             remainingTime = 100.01;
         }
+        setCountDownBar();            
         //if(countdownTime > 5) {
         //    countdownTime -= 5;        
         //}
@@ -320,7 +363,7 @@ let stressBarNumber = 1;
 function setStressBar(stress, barId) { 
     let stressBar = document.getElementById(barId);      
     stressBar.style.setProperty('height', (stress) +"%");    
-    prevStress = stress;        
+    prevStress += stress;        
 }
 
 
@@ -334,8 +377,8 @@ function addStressBar() {
     parent.append(newBar);
     newBar.id = 'meter21';
     newBar.className = 'stressMeters';
-    newBar.style.left = (4 + distanceFromLeft) + 'vmin';
-    distanceFromLeft += 4;    
+    newBar.style.left = (2.5 + distanceFromLeft) + 'vmin';
+    distanceFromLeft += 2.5;    
 
     //set stress level element
     parent = newBar;
@@ -350,8 +393,7 @@ function addStressBar() {
 function setCountDownBar() {     
     let countdownBar = document.getElementById('countdown');     
     resetAnimation(countdownBar);
-    countdownBar.style.setProperty('height', (remainingTime) + '%');
-    remainingTime = remainingTime - 5;
+    countdownBar.style.setProperty('height', (remainingTime) + '%');    
     //countdownBar.style.setProperty('animation-duration',  countdownTime + 's' );                  
 }
 
@@ -363,19 +405,14 @@ function setCountDownBar() {
 ////////////////
 
 let x1, y1, x2, y2, stress;
-box.addEventListener('mousemove', function(event) {
-    console.log("hi",event);
-    mouseTracker(event);
-    return;
-});
-
-
-function mouseTracker(event) {    
+let counter = 1;
+$('html').mousemove(function (event) {    
     console.log("hello",event);
     var x2 = event.clientX;
     var y2 = event.clientY;   
     
-    stress = 20*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5))     
+    
+    stress = 10*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5))     
     if(stress > 100) {
         stress = 100;
     }    
@@ -383,10 +420,13 @@ function mouseTracker(event) {
     if(prevStress == null) {
         prevStress = 0;
     }
+
+    stress = Math.pow(1.05, stress);
     setStressBar(stress, ('stress' + stressBarNumber));                 
         
     x1 = x2;
-    y1 = y2;             
-}
+    y1 = y2;  
+    counter += 1;        
+});
 
 
