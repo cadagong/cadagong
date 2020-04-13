@@ -51,10 +51,11 @@ let allElements = document.querySelector('#emoji-class');
 let box = document.getElementById("box");
 
 document.body.style.transition = '1s';
-document.body.style.backgroundColor = bgChange();
-box.style.backgroundColor = 'lightyellow';
+box.style.backgroundColor = bgChange();
 
-let countdownTime = 20;
+let remainingTime = 100; //in percent
+//setCountDownBar();
+
 
 ///////////////////////////////////////
 //Emoji Class to create Emoji instances
@@ -63,7 +64,7 @@ class Emoji {
     constructor() {
         this.emoji = getRandEmoji();
         this.x = window.innerWidth * (randomNum(65)) * 0.01 + 'px' ;
-        this.y = window.innerHeight * (randomNum(70)) * 0.01 + 'px' ;
+        this.y = window.innerHeight * (randomNum(65)) * 0.01 + 'px' ;
         this.fontSize = randomNum(5) + 2 + 'vmax';
         this.zIndex = '0';
         this.className = 'emoji-class';
@@ -80,6 +81,7 @@ class Emoji {
         emojiElem.style.fontSize = this.fontSize;
         emojiElem.style.position = this.position;
         emojiElem.style.zIndex = this.zIndex;
+        setNonWaldo(emojiElem);        
         box.appendChild(emojiElem);
         return emojiElem;
     }
@@ -132,6 +134,23 @@ function win() {
 //Setting up events
 ///////////////////
 
+
+//set up events for non-waldo emojis
+function setNonWaldo(nonWaldo) {
+    nonWaldo.style.cursor = 'pointer'
+
+    nonWaldo.onclick = function(e) {
+        setProgressBar(-10);
+
+        let audio = document.getElementById("audio2");
+        audio.play(); //play "wrong" sound
+        setTimeout(function() {
+            audio.pause();
+            audio.currentTime = 0;
+        }, 500);
+    }
+}
+
 //create waldo elements and set event tiggers
 function setEmojiToFind(waldoEmoji) {
     waldoEmojiElement.textContent = waldoEmoji.emoji;
@@ -141,23 +160,23 @@ function setEmojiToFind(waldoEmoji) {
     emojiToFind.zIndex = '1';
     elementToFind = emojiToFind.generate();
 
-    //define onmouseover event for "waldo" element
-    elementToFind.onmouseover = function(e) {
-        elementToFind.style.cursor = 'pointer';
-    }
+    //define onmouseover event for "waldo" element    
+    elementToFind.style.cursor = 'pointer';
+    
 
     //define onclick event when "waldo" is found
     elementToFind.onclick = function(e) {
-        setProgressBar(); 
-        if(countdownTime > 5) {
-            countdownTime -= 5;        
-        }
-        setCountDownBar();
+        setProgressBar(10);         
+        addStressBar();
+        //if(countdownTime > 5) {
+        //    countdownTime -= 5;        
+        //}
+        //setCountDownBar();
         if (progressBar.style.width == '100%') { win(); return; }       
         //add found "waldo" emoji back into emojis array
         selectedEmojis.push(waldoEmoji.emoji);
         numberOfEmojis += 10; //increase difficulty
-        box.style.backgroundColor = 'palegreen';
+        box.style.backgroundColor = bgChange();
         let audio = document.getElementById("audio");
         audio.play(); //play "ding" sounds
         setTimeout(function() {
@@ -178,9 +197,8 @@ function setEmojiToFind(waldoEmoji) {
 
 
 //resets page after emoji is found
-function resetPage() {
-    box.style.backgroundColor = 'lightyellow';
-    document.body.style.backgroundColor = bgChange(); 
+function resetPage() {    
+    //document.body.style.backgroundColor = bgChange(); 
        
     while (document.getElementsByClassName('emoji-class')[0]) {
         document.getElementsByClassName('emoji-class')[0].remove();
@@ -281,8 +299,11 @@ function resetAnimation(subject) {
 
 
 //updates progress bar
-function setProgressBar() {    
-    progressBarProgress += 10;    
+function setProgressBar(num) {    
+    progressBarProgress += num; 
+    if(progressBarProgress < 0) {
+        progressBarProgress = 0;
+    }
     progressBar.style.setProperty('width', progressBarProgress + '%');  
 
 }
@@ -290,19 +311,50 @@ function setProgressBar() {
 
 //updates stress bar
 let prevStress;
-function setStressBar(stress) {
-    let stressBar = document.getElementById("stress")         
+let stressBarNumber = 1;
+function setStressBar(stress, barId) { 
+    let stressBar = document.getElementById(barId);      
     stressBar.style.setProperty('height', (stress) +"%");    
-    prevStress = stress;
+    prevStress = stress;        
 }
 
 
+let distanceFromLeft = 3
+//adds a new stress bar
+function addStressBar() {
+    stressBarNumber += 1;
+    let parent = document.getElementById("stressMeters");
+    //new stress meter
+    let newBar = document.createElement("div");
+    parent.append(newBar);
+    newBar.id = 'meter21';
+    newBar.className = 'stressMeters';
+    newBar.style.left = (4 + distanceFromLeft) + 'vmin';
+    distanceFromLeft += 4;    
+
+    //set stress level element
+    parent = newBar;
+    let newStressLevel = document.createElement("span");
+    newStressLevel.id = 'stress' + stressBarNumber;
+    newStressLevel.className = 'stress';
+    newStressLevel.style.backgroundColor = bgChange();
+    parent.append(newStressLevel);
+}
+
+/*
 function setCountDownBar() {     
     let countdownBar = document.getElementById('countdown');     
     resetAnimation(countdownBar);
-    countdownBar.style.setProperty('animation-duration',  countdownTime + 's' );
+    countdownBar.style.setProperty('height', (remainingTime - 5) + '%');
+    remainingTime = remainingTime - 5;
+    //countdownBar.style.setProperty('animation-duration',  countdownTime + 's' );
+    setInterval( function(){ 
+        setCountDownBar();
+        }, 1000 );    
            
 }
+*/
+
 
 
 ////////////////
@@ -310,8 +362,6 @@ function setCountDownBar() {
 ////////////////
 
 let x1, y1, x2, y2, stress;
-
-
 box.addEventListener('mousemove', function(event) {
     console.log("hi",event);
     mouseTracker(event);
@@ -319,20 +369,23 @@ box.addEventListener('mousemove', function(event) {
 });
 
 
-function mouseTracker(event) {
-  console.log("hello",event);
+function mouseTracker(event) {    
+    console.log("hello",event);
     var x2 = event.clientX;
     var y2 = event.clientY;   
     
-    stress = 7*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5)) 
+    stress = 20*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5))     
     if(stress > 100) {
         stress = 100;
-    }
+    }    
+
     if(prevStress == null) {
         prevStress = 0;
     }
-    setStressBar(stress);           
+    setStressBar(stress, ('stress' + stressBarNumber));                 
         
     x1 = x2;
-    y1 = y2;      
+    y1 = y2;             
 }
+
+

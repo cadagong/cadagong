@@ -11,9 +11,10 @@
     </head>
 
     <body style="margin: 0;">
-        <div class = "mouse box" id = "mousebox"  >
+        <div class = "mouse box" id = "mousebox">
      		   <img src="./images/ceno-logo.jpg" id="ceno">                 
-        </div>
+        </div>        
+
         <div id="mySidenav" 	 >                        
             <div class="buttons" id="animals" onclick="setToAnimalEmojis()">🐒</div>               
             <div class="buttons" id="faces" onclick="setToFaceEmojis()" >😀</div>            
@@ -33,20 +34,27 @@
 
                 <p id='waldo-emoji';></p>
                 <div id="magnifying-background"></div>
-                <p id='find'>🔍</p>
+                <p id='find'>🔍</p>                
                 <audio id="audio" src="sounds/ding.mp3"></audio>
+                <audio id="audio2" src="sounds/wrong.wav"></audio>
                 <audio id='trumpet' src='sounds/trumpet.mp3'></audio> 
 
-
+            
                 <div id="meter">            
                     <span id="progress"></span>            
                 </div>
-                <div id="meter2">            
-                    <span id="stress"></span>            
+
+                <div class="stressMeters" id='stressMeters'>
+                    <div id="meter2">            
+                        <span class="stress" id="stress1"></span>            
+                    </div>                
                 </div>
+
                 <div class="meter3">            
                     <span id="countdown"></span>            
                 </div>   
+                
+                
 
             </div>       
             	<div id="box" ></div>  
@@ -54,25 +62,8 @@
 
         </div>  
 
-
-<div onmousemove="myFunction(event)" onmouseout="clearCoor()"></div>
-
-<p id="demo"></p>
- 	 	
-<script>
-function myFunction(e) {
-  var x = e.clientX;
-  var y = e.clientY;
-  var coor = "Coordinates: (" + x + "," + y + ")";
-  document.getElementById("demo").innerHTML = coor;
-}
-
-function clearCoor() {
-  document.getElementById("demo").innerHTML = "";
-}
-</script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
         <script src="confetti-js-master/dist/index.min.js"></script>
-        <script src="scourhour.js"></script>
+        <script src="scourhour.js"></script>        
     </body>
 </html>
