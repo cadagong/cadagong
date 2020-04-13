@@ -302,23 +302,54 @@ function setToStartScreen() {
 //functions that set emoji types
 ////////////////////////////////
 
+function unselectButton() {
+    $("#mystery, #travel, #food, #clothes, #faces, #animals").css("border-left", "1vmin solid black");
+    $("#mystery, #travel, #food, #clothes, #faces, #animals").css("border-bottom", "1vmin solid black");
+    $("#mystery, #travel, #food, #clothes, #faces, #animals").css("border-top", "0");
+    $("#mystery, #travel, #food, #clothes, #faces, #animals").css("border-right", "0");
+}
+function selectButton(type) {
+    $("#" + type).css("border-top", "1vmin solid black");
+    $("#" + type).css("border-right", "1vmin solid black");
+    $("#" + type).css("border-bottom", "0");
+    $("#" + type).css("border-left", "0");
+}
+
 function setToAnimalEmojis() {
-    selectedEmojis = animalEmojis;    
+    selectedEmojis = animalEmojis;
+    unselectButton();
+    selectButton("animals");
+    resetPage();
 }
 function setToFaceEmojis() {
-    selectedEmojis = faceEmojis;    
+    selectedEmojis = faceEmojis;
+    unselectButton();
+    selectButton("faces");
+    resetPage();
 }
 function setToClothesEmojis() {
-    selectedEmojis = clothesEmojis;    
+    selectedEmojis = clothesEmojis;
+    unselectButton();
+    selectButton("clothes");
+    resetPage();
 }
 function setToFoodEmojis() {
-    selectedEmojis = foodEmojis;    
+    selectedEmojis = foodEmojis;
+    unselectButton();
+    selectButton("food");
+    resetPage();
 }
 function setToTravelEmojis() {
-    selectedEmojis = travelEmojis;    
+    selectedEmojis = travelEmojis;
+    unselectButton();
+    selectButton("travel");
+    resetPage();
 }
 function setToAllEmojis() {
-    selectedEmojis = emojis;    
+    selectedEmojis = emojis;
+    unselectButton();
+    selectButton("mystery");
+    resetPage();
 }
 
 

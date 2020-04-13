@@ -1,28 +1,28 @@
     #mySidenav {
-        height: 7.5vmin; 
+        height: 9.5vmin;
         position: fixed; 
         top: 2vmin;
         right: 2vmin;
-        width: calc(40vw);
+        width: calc(79vw - 3.5vmin);
         border-bottom: 1vmin solid black;
         border-left: 1vmin solid black;
 
-        border-radius: 0px 0px 0px 3vmin;
+        border-radius: 0px 3vmin 0px 3vmin;
         transition: 0.5s;            
         background-color: lightyellow; 
         z-index: 5;    
       } 
     #ceno {
-        left: 2vw;
+        left: calc(2.5vmin + 2vw);
         /*border-radius: 0vmin 0vmin 3vmin 3vmin;*/
-        top: 20vh;
-        width: 13vw;
+        top: 38vh;
+        width: 15vw;
         height: auto;
         position: fixed;
         /*border: 3px solid black;*/
-                transition: 0.5s; 
+        transition: 0.5s;
       
-        z-index: 100;
+        z-index: 300;
     }
 
     .mouse {
@@ -31,27 +31,27 @@
         height: calc(100vh - 4vmin);
         margin: 1vmin;
         border: 1vmin solid black; 
-        border-radius: 0.7vmin;
+        border-radius: 3vmin;
         background-color: lightyellow;
     }
     p {
-        font-size: 4vmax;            
+        font-size: 4vw;
         margin: 0;
         display: flex;
         position: absolute;
     }          
     #find {
-        opacity: 50%;
-        font-size: 9vmax;
-        left: 0vmin;                      
-        top: 0vmin;
+        opacity: 30%;
+        font-size: 13vw;
+        left: -0.5vw;
+        top: -1vw;
     }   
     #box {
         position: fixed; 
         right: 1vmin;
-        width: calc(79vw - 4.5vmin);
+        width: calc(79vw - 3.5vmin);
         bottom: 1vmin;
-        height: calc(100vh - 12.5vmin);
+        height: calc(100vh - 14.5vmin);
         border-radius: 3vmin 0 0 0 ;
         transition: 0.5s; 
         z-index: 5;    
@@ -59,29 +59,37 @@
         cursor: '🔍';       
     }
     #waldo-emoji {
-        left: 40%;
-        top: 40%;
+        left: 3.5vw;
+        top: 3.5vw;
     }
     #magnifying-background {
         position: absolute; 
         background-color: whitesmoke;
         z-index: -10; 
-        border-radius: 10vmax; 
-        left: 0vmin; 
-        top: 1.3vmin; 
-        width: 125%; 
-        height: 125%;        
-        margin: 2.7vmin 1.5vmin 2vmin 3.3vmin;
+        border-radius: 10vmax;
+        left: 2vw;
+        top: 2vw;
+        width: 9vw;
+        height: 9vw;
     }
 
     .buttons {        
         cursor: pointer; 
         transition: 0.1s;  
         position: absolute;   
-        top: -1vmin;
-        font-size: 6.5vmin; 
+        top: 0.1vmin;
+        font-size: 6.2vmin;
         z-index: 10;
-    }  
+    }
+
+    #mystery, #travel, #food, #clothes, #faces, #animals {
+        background-color: pink;
+        border-radius: 3vmin;
+        border-left: 1vmin solid black;
+        border-bottom: 1vmin solid black;
+        transition: 700ms;
+    }
+
     #animals {        
         left: 0%;                              
     } 
@@ -95,11 +103,16 @@
         left: 54%;        
     }
     #travel {
-        left: 72%;      
+        left: 72%;
     }
     #mystery {
-        left: 90%;               
+        left: 90%;
+        border-top: 1vmin solid black;
+        border-right: 1vmin solid black;
+        border-left: 0;
+        border-bottom: 0;
     }
+
 /*
     #arrow {        
         left: 25%; 
@@ -141,9 +154,9 @@
     }  
     .meter3 { /* countdown */
         position: fixed;
-        left: 17vw;
+        left: 16.5vw;
         top: 2.5vh;
-        width: 3vw;
+        width: calc(2.5vmin + 1vw);
         height: 25vh;
         background-color: lightyellow;
         border-radius: 3vmin;
@@ -186,7 +199,7 @@
         position: fixed;        
         bottom: 2vh;
         width: 2.5vmin;
-        height: 67%;
+        height: 50vh;
         background-color: lightyellow;                        
         transition: 0.0s;  
         left: 3vmin;   
