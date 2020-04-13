@@ -153,18 +153,18 @@
         bottom: 0;
         position: absolute;        
         background-color: #ecbb19;
-        transition: 0.5s;
+        transition: 0.2s;
 
-    
+    /*
         animation: progressbar 6s ease-in-out;
         animation-duration: 30s;
         animation-fill-mode: forwards;    
         --height0: 0%;
         --height100: 100%;
-       
+    */ 
     }     
     
-    
+    /*
     @keyframes progressbar {
         from {
         height: var(--height100);
@@ -173,6 +173,7 @@
         height: var(--height0);
         } 
     }
+    */
     
     
 

@@ -53,8 +53,10 @@ let box = document.getElementById("box");
 document.body.style.transition = '1s';
 box.style.backgroundColor = bgChange();
 
-let remainingTime = 100; //in percent
-//setCountDownBar();
+let remainingTime = 100.01; //in percent
+setInterval( function(){ 
+    setCountDownBar();
+}, 1000 ); 
 
 
 ///////////////////////////////////////
@@ -168,6 +170,10 @@ function setEmojiToFind(waldoEmoji) {
     elementToFind.onclick = function(e) {
         setProgressBar(10);         
         addStressBar();
+        remainingTime += 10;
+        if(remainingTime >= 100.01) {
+            remainingTime = 100.01;
+        }
         //if(countdownTime > 5) {
         //    countdownTime -= 5;        
         //}
@@ -340,19 +346,15 @@ function addStressBar() {
     parent.append(newStressLevel);
 }
 
-/*
+
 function setCountDownBar() {     
     let countdownBar = document.getElementById('countdown');     
     resetAnimation(countdownBar);
-    countdownBar.style.setProperty('height', (remainingTime - 5) + '%');
+    countdownBar.style.setProperty('height', (remainingTime) + '%');
     remainingTime = remainingTime - 5;
-    //countdownBar.style.setProperty('animation-duration',  countdownTime + 's' );
-    setInterval( function(){ 
-        setCountDownBar();
-        }, 1000 );    
-           
+    //countdownBar.style.setProperty('animation-duration',  countdownTime + 's' );                  
 }
-*/
+
 
 
 
