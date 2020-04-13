@@ -263,14 +263,14 @@ function populatePage() {
     setEmojiToFind(waldoEmoji);
 
     //remove emoji to be found from emojis array
-    for (i = 0; i < selectedEmojis.length; i++) {
+    for (let i = 0; i < selectedEmojis.length; i++) {
         if (waldoEmoji.emoji == selectedEmojis[i]) {
             selectedEmojis.splice(i, 1);
         }
     }
     //generate emojis from remaining emojis 
     //not including the emoji to be
-    for (i = 0; i < numberOfEmojis; i++) {
+    for (let i = 0; i < numberOfEmojis; i++) {
         let emoji = new Emoji();
         emoji.generate();
     }
@@ -403,26 +403,40 @@ function setCountDownBar() {
 ////////////////
 //Mouse Tracking
 ////////////////
-
+let i = 0;
+let sum = 0;
+// let stage = 0;
 let x1, y1, x2, y2, stress;
 let counter = 1;
 $('html').mousemove(function (event) {    
     console.log("hello",event);
+    console.log( (new Date).getTime());
     var x2 = event.clientX;
     var y2 = event.clientY;   
-    
-    
-    stress = 10*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5))     
-    if(stress > 100) {
-        stress = 100;
-    }    
 
     if(prevStress == null) {
         prevStress = 0;
     }
 
-    stress = Math.pow(1.05, stress);
-    setStressBar(stress, ('stress' + stressBarNumber));                 
+    stress = 20*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.17))   ; 
+
+    i = i+1;
+    if (i < 10) {
+        sum += stress;
+    }
+    if (i >= 10) {
+        i = 0;
+        //optional stage - to be able to average the stress over a stage
+        output2stress = sum / 10;   
+        
+        // stress = Math.pow(1.05, stress);
+        setStressBar(output2stress, ('stress' + stressBarNumber));  
+        sum = 0    
+    }
+ 
+
+
+           
         
     x1 = x2;
     y1 = y2;  

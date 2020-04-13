@@ -53,7 +53,8 @@
         border-radius: 1vmin 0vmin 0vmin 0vmin;
         transition: 0.5s; 
         z-index: 5;    
-        border: 1vmin solid black;        
+        border: 1vmin solid black; 
+        cursor: ;       
     }
     #waldo-emoji {
         left: 40%;
