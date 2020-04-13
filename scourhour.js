@@ -303,28 +303,22 @@ function setToStartScreen() {
 ////////////////////////////////
 
 function setToAnimalEmojis() {
-    selectedEmojis = animalEmojis;
-    resetPage();
+    selectedEmojis = animalEmojis;    
 }
 function setToFaceEmojis() {
-    selectedEmojis = faceEmojis;
-    resetPage();
+    selectedEmojis = faceEmojis;    
 }
 function setToClothesEmojis() {
-    selectedEmojis = clothesEmojis;
-    resetPage();
+    selectedEmojis = clothesEmojis;    
 }
 function setToFoodEmojis() {
-    selectedEmojis = foodEmojis;
-    resetPage();
+    selectedEmojis = foodEmojis;    
 }
 function setToTravelEmojis() {
-    selectedEmojis = travelEmojis;
-    resetPage();
+    selectedEmojis = travelEmojis;    
 }
 function setToAllEmojis() {
-    selectedEmojis = emojis;
-    resetPage();
+    selectedEmojis = emojis;    
 }
 
 

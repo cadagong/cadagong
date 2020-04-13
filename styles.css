@@ -56,7 +56,7 @@
         transition: 0.5s; 
         z-index: 5;    
         border: 1vmin solid black; 
-        cursor: ;       
+        cursor: '🔍';       
     }
     #waldo-emoji {
         left: 40%;
@@ -214,9 +214,9 @@
         top: 0vmax;
     }   
     #startBtn {
-        left: 75vmin;
-        top: 35vmin;
-        width: 10vmin;
-        position: absolute;
+        left: 77vmin;
+        top: 36vmin;
+        width: 13vmin;
+        position: absolute;        
     }
                                                      
