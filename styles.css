@@ -1,26 +1,28 @@
     #mySidenav {
         height: 7.5vmin; 
         position: fixed; 
-        top: 1vmin; 
-        left: calc(76.35vw - 6.35vmin - 40vw + 22vw );
+        top: 2vmin;
+        right: 2vmin;
         width: calc(40vw);
-        border: 1vmin solid black;
-        border-radius: 0px 0px 6px 6px;                        
+        border-bottom: 1vmin solid black;
+        border-left: 1vmin solid black;
+
+        border-radius: 0px 0px 0px 3vmin;
         transition: 0.5s;            
         background-color: lightyellow; 
         z-index: 5;    
       } 
     #ceno {
-        left: 22vw;
-        border-radius: 0vmin 0vmin 0vmin 1vmin;
-        top: 1vmin;
-        width: auto;        
-        height: 7.5vmin;
+        left: 2vw;
+        /*border-radius: 0vmin 0vmin 3vmin 3vmin;*/
+        top: 20vh;
+        width: 13vw;
+        height: auto;
         position: fixed;
-        border: 1vmin solid black;
+        /*border: 3px solid black;*/
                 transition: 0.5s; 
       
-        z-index: -10;
+        z-index: 100;
     }
 
     .mouse {
@@ -46,11 +48,11 @@
     }   
     #box {
         position: fixed; 
-        left: 22vw;     
-        width: calc(76.35vw - 6.35vmin);
-        top: 15.5vmin; 
-        height: calc(100vh - 18.5vmin); 
-        border-radius: 1vmin 0vmin 0vmin 0vmin;
+        right: 1vmin;
+        width: calc(79vw - 4.5vmin);
+        bottom: 1vmin;
+        height: calc(100vh - 12.5vmin);
+        border-radius: 3vmin 0 0 0 ;
         transition: 0.5s; 
         z-index: 5;    
         border: 1vmin solid black; 
@@ -118,13 +120,13 @@
     }*/
     #meter { /* progress */
         position: fixed;
-        left: 22vw;     
-        top: 9.4vmin;
-        width: calc(76.35vw - 6.35vmin);
+        left: 2.5vmin;
+        top: 30vh;
+        width: 17.5vw;
         height: 5.6vmin;
         background-color: lightyellow;
         overflow: hidden;
-        border-radius: 1vmin;
+        border-radius: 3vmin;
         border: 1vmin solid black;
         transition: 0.5s;
         z-index: 5;             
@@ -139,22 +141,23 @@
     }  
     .meter3 { /* countdown */
         position: fixed;
-        left: calc(98.7vw - 6vmin);
-        top: 1vmin;
-        width: 5.6vmin;
-        height: calc(100vh - 4vmin);
-        background-color: lightyellow;        
-        border-radius: 1vmin;
-        border: 1vmin solid black; 
+        left: 17vw;
+        top: 2.5vh;
+        width: 3vw;
+        height: 25vh;
+        background-color: lightyellow;
+        border-radius: 3vmin;
+        border: 1vmin solid black;
         z-index: 3;                   
     }   
     #countdown {    
-        height: 100.01%;
+        height: 100.0%;
         width: 100%;
         bottom: 0;
         position: absolute;        
         background-color: #ecbb19;
         transition: 1s;
+        border-radius: 2vmin;
 
     /*
         animation: progressbar 6s ease-in-out;
@@ -181,7 +184,7 @@
 
     .stressMeters {
         position: fixed;        
-        top: 29vmin;
+        bottom: 2vh;
         width: 2.5vmin;
         height: 67%;
         background-color: lightyellow;                        
