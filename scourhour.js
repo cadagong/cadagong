@@ -195,7 +195,6 @@ function setEmojiToFind(waldoEmoji) {
 //Page reset and populate functions
 ///////////////////////////////////
 
-
 //resets page after emoji is found
 function resetPage() {    
     //document.body.style.backgroundColor = bgChange(); 
