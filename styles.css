@@ -1,5 +1,5 @@
     #mySidenav {
-        height: 7.5vmin; 
+        height: 9.5vmin;
         position: fixed; 
         top: 2vmin;
         right: 2vmin;
@@ -22,7 +22,7 @@
         /*border: 3px solid black;*/
         transition: 0.5s;
       
-        z-index: 100;
+        z-index: 300;
     }
 
     .mouse {
@@ -51,7 +51,7 @@
         right: 1vmin;
         width: calc(79vw - 3.5vmin);
         bottom: 1vmin;
-        height: calc(100vh - 12.5vmin);
+        height: calc(100vh - 14.5vmin);
         border-radius: 3vmin 0 0 0 ;
         transition: 0.5s; 
         z-index: 5;    
@@ -77,10 +77,19 @@
         cursor: pointer; 
         transition: 0.1s;  
         position: absolute;   
-        top: -1vmin;
-        font-size: 6.5vmin; 
+        top: 0.1vmin;
+        font-size: 6.2vmin;
         z-index: 10;
     }
+
+    #mystery, #travel, #food, #clothes, #faces, #animals {
+        background-color: pink;
+        border-radius: 3vmin;
+        border-left: 1vmin solid black;
+        border-bottom: 1vmin solid black;
+        transition: 700ms;
+    }
+
     #animals {        
         left: 0%;                              
     } 
@@ -94,11 +103,16 @@
         left: 54%;        
     }
     #travel {
-        left: 72%;      
+        left: 72%;
     }
     #mystery {
-        left: 90%;               
+        left: 90%;
+        border-top: 1vmin solid black;
+        border-right: 1vmin solid black;
+        border-left: 0;
+        border-bottom: 0;
     }
+
 /*
     #arrow {        
         left: 25%; 
