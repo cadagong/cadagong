@@ -205,11 +205,11 @@
         bottom: 2vh;
         width: 2.5vmin;
         height: 35vh;
-        background-color: lightyellow;                        
+        /*background-color: lightyellow;                        */
         transition: 0.0s;  
         left: 3vmin;   
         overflow: hidden;
-        border-top: 2px solid lightyellow;
+        /*border-top: 2px solid lightyellow;*/
         border-radius: 5px 5px 0px 0px;         
     }
 
@@ -232,12 +232,12 @@
         top: 0vmax;
     }   
     #startBtn {
-        left: 77vmin;
-        top: 36vmin;
+        left: 45%;
+        bottom: 45%;
         width: 13vmin;
         position: absolute; 
-        border: 5px solid darkgreen; 
-        border-radius: 25vh;
+        border: 1vmin solid darkgreen;
+        border-radius: 3vmin;
         cursor: pointer;      
     }
                                                      

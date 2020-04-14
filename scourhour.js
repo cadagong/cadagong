@@ -56,7 +56,7 @@ box.style.backgroundColor = bgChange();
 let remainingTime = 100.01; //in percent
 
 let gameStarted = false;
-
+let gameWin = false;
 
 
 
@@ -129,28 +129,35 @@ function releaseConfetti() {
 function win() {
     releaseConfetti(); //user has "won", release confetti
     let audio = document.getElementById('trumpet');
-    audio.play(); //play trumpet win sound    
+    audio.play(); //play trumpet win sound
+    gameWin = true;
+    setToStartScreen();
 }
 
 function startTimer() {
     let countdown = setInterval( function(){ 
         setCountDownBar();
-        remainingTime = remainingTime - 3;
+        if (gameWin === true) {
+            clearInterval(countdown);
+        }
+        remainingTime = remainingTime - 4;
         //if timer runs out
-        if(remainingTime <= 0) {  
-            clearInterval(countdown);      
+        if(remainingTime <= 0) {
+            clearInterval(countdown);
             timerRunOut();
         }
-    }, 1000 ); 
+    }, 1000 );
 }
 
 
-function timerRunOut() {
+function timerRunOut(win) {
     progressBar.style.width = '0%';    
     progressBarProgress = 0;
-    numberOfEmojis = 10;    
-    let audio = document.getElementById("lose");
-    audio.play(); //play "wrong" sound    
+    numberOfEmojis = 10;
+    if (gameWin === false) {
+        let audio = document.getElementById("lose");
+        audio.play(); //play "wrong" sound
+    }
     while (document.getElementsByClassName('emoji-class')[0]) {
         document.getElementsByClassName('emoji-class')[0].remove();
     }
@@ -168,7 +175,10 @@ function timerRunOut() {
         remainingTime = 100.1; 
         setCountDownBar();     
         backgroundColor = bgChange();
-        setToStartScreen();
+        if (!win) {
+            setToStartScreen();
+        }
+
         //resetPage();
         //startTimer();
         //addStressBar();
@@ -215,7 +225,7 @@ function setEmojiToFind(waldoEmoji) {
 
     //define onclick event when "waldo" is found
     elementToFind.onclick = function(e) {
-        setProgressBar(10);         
+        setProgressBar(10);
         addStressBar();        
         remainingTime += 10;
         if(remainingTime >= 100.01) {
@@ -288,10 +298,12 @@ function setToStartScreen() {
 
     let parent = document.getElementById('box');       
     let playBtn = document.createElement("img");
-    playBtn.src = 'images/playBtn.jpg';
+    playBtn.src = './images/playBtn.png';
     playBtn.id = 'startBtn';    
     parent.append(playBtn);
     $('#startBtn').mouseup(function(event) {
+        timerRunOut(win); ///todo some kind of bug here - after winning once
+        gameWin = false;
         document.getElementById('startBtn').remove();
         populatePage();
         startTimer();
@@ -484,7 +496,7 @@ $('html').mousemove(function (event) {
     }
 
 
-    stress = (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.80))   ;     
+    stress =  20 * (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.40))   ;
 
     i = i+1;
     if (i < 10) {
