@@ -54,7 +54,8 @@ document.body.style.transition = '1s';
 box.style.backgroundColor = bgChange();
 
 let remainingTime = 100.01; //in percent
-startTimer();
+
+let gameStarted = false;
 
 
 
@@ -84,6 +85,7 @@ class Emoji {
         emojiElem.style.position = this.position;
         emojiElem.style.zIndex = this.zIndex;
         emojiElem.style.transition = '3s';
+        emojiElem.style.cursor = 'url(images/magGlassCur.cur), auto)';
         setNonWaldo(emojiElem);        
         box.appendChild(emojiElem);
         return emojiElem;
@@ -133,7 +135,7 @@ function win() {
 function startTimer() {
     let countdown = setInterval( function(){ 
         setCountDownBar();
-        remainingTime = remainingTime - 4;
+        remainingTime = remainingTime - 3;
         //if timer runs out
         if(remainingTime <= 0) {  
             clearInterval(countdown);      
@@ -144,8 +146,7 @@ function startTimer() {
 
 
 function timerRunOut() {
-    progressBar.style.width = '0%';
-    //progressBar.style.setProperty('width', progressBarProgress + '%');  
+    progressBar.style.width = '0%';    
     progressBarProgress = 0;
     numberOfEmojis = 10;    
     let audio = document.getElementById("lose");
@@ -156,6 +157,9 @@ function timerRunOut() {
     while (document.getElementsByClassName('stress')[0]) {
         document.getElementsByClassName('stress')[0].remove();
     }
+    document.getElementById('waldo-emoji').textContent = '';
+    gameStarted = false;
+    box.style.cursor = 'auto';
     distanceFromLeft = 3;
     stressBarNumber = 0;
     setTimeout(function() {
@@ -164,9 +168,10 @@ function timerRunOut() {
         remainingTime = 100.1; 
         setCountDownBar();     
         backgroundColor = bgChange();
-        resetPage();
-        startTimer();
-        addStressBar();
+        setToStartScreen();
+        //resetPage();
+        //startTimer();
+        //addStressBar();
     }, 4000);
 
 }
@@ -181,7 +186,7 @@ function timerRunOut() {
 
 //set up events for non-waldo emojis
 function setNonWaldo(nonWaldo) {
-    nonWaldo.style.cursor = 'pointer'
+    //nonWaldo.style.cursor = 'pointer'
 
     nonWaldo.onclick = function(e) {
         setProgressBar(-10);
@@ -204,7 +209,7 @@ function setEmojiToFind(waldoEmoji) {
     emojiToFind.zIndex = '1';
     let elementToFind = emojiToFind.generate();
       
-    elementToFind.style.cursor = 'pointer';
+    //elementToFind.style.cursor = 'pointer';
     //$('html').off('mousemove');    
     
 
@@ -276,8 +281,32 @@ function populatePage() {
     }
 }
 
+function setToStartScreen() {
+    while (document.getElementsByClassName('emoji-class')[0]) {
+        document.getElementsByClassName('emoji-class')[0].remove();
+    }
 
-populatePage();
+    let parent = document.getElementById('box');       
+    let playBtn = document.createElement("img");
+    playBtn.src = 'images/playBtn.jpg';
+    playBtn.id = 'startBtn';    
+    parent.append(playBtn);
+    $('#startBtn').mouseup(function(event) {
+        document.getElementById('startBtn').remove();
+        populatePage();
+        startTimer();
+        gameStarted = true;
+    })
+    $('#startBtn').mousedown(function(event) {
+        let btn = document.getElementById('startBtn');
+        btn.style.border = '5px solid lightgreen'
+        box.style.cursor = 'url(images/magGlassCur.cur), auto';
+    })
+
+}
+
+
+//populatePage();
 
 
 ////////////////////////////////
@@ -301,37 +330,49 @@ function setToAnimalEmojis() {
     selectedEmojis = animalEmojis;
     unselectButton();
     selectButton("animals");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToFaceEmojis() {
     selectedEmojis = faceEmojis;
     unselectButton();
     selectButton("faces");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToClothesEmojis() {
     selectedEmojis = clothesEmojis;
     unselectButton();
     selectButton("clothes");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToFoodEmojis() {
     selectedEmojis = foodEmojis;
     unselectButton();
     selectButton("food");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToTravelEmojis() {
     selectedEmojis = travelEmojis;
     unselectButton();
     selectButton("travel");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToAllEmojis() {
     selectedEmojis = emojis;
     unselectButton();
     selectButton("mystery");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 
 
@@ -432,7 +473,6 @@ let i = 0;
 let sum = 0;
 // let stage = 0;
 let x1, y1, x2, y2, stress;
-let counter = 1;
 $('html').mousemove(function (event) {    
     console.log("hello",event);
     console.log( (new Date).getTime());
@@ -443,29 +483,54 @@ $('html').mousemove(function (event) {
         prevStress = 0;
     }
 
-    stress = 30*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.17))   ;
+
+    stress = (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.80))   ;     
 
     i = i+1;
     if (i < 10) {
         sum += stress;
     }
     if (i >= 10) {
-        i = 0;
-        //optional stage - to be able to average the stress over a stage
+        i = 0;        
         output2stress = sum / 10;   
         
-        // stress = Math.pow(1.05, stress);
+        if(output2stress > 100) {
+            output2stress = 100;
+        }
+        
         setStressBar(output2stress, ('stress' + stressBarNumber));  
         sum = 0    
     }
  
-
-
-           
-        
     x1 = x2;
-    y1 = y2;  
-    counter += 1;        
+    y1 = y2;             
 });
+
+
+
+
+let bgChangeOnStart = setInterval(function() {
+    box.style.transition = '3s'
+    box.style.backgroundColor = bgChange();    
+}, 3000);
+
+
+
+$('#startBtn').mousedown(function(event) {
+    let btn = document.getElementById('startBtn');
+    btn.style.border = '5px solid lightgreen'
+})
+
+
+$('#startBtn').mouseup(function(event) {
+    let btn = document.getElementById('startBtn');    
+    btn.remove();
+    box.style.transition = '0.5s'
+    box.style.cursor = 'url(images/magGlassCur.cur), auto';
+    clearInterval(bgChangeOnStart);    
+    populatePage();
+    startTimer();
+    gameStarted = true;    
+})
 
 

@@ -1,11 +1,11 @@
     #mySidenav {
         height: 9.5vmin;
         position: fixed; 
-        top: 2vmin;
+        top: 1.99vmin;
         right: 2vmin;
         width: calc(79vw - 3.5vmin);
         border-bottom: 1vmin solid black;
-        border-left: 1vmin solid black;
+        border-left: 1vmin solid black;        
 
         border-radius: 0px 3vmin 0px 3vmin;
         transition: 0.5s;            
@@ -15,7 +15,7 @@
     #ceno {
         left: calc(2.5vmin + 2vw);
         /*border-radius: 0vmin 0vmin 3vmin 3vmin;*/
-        top: 38vh;
+        top: 50vh;
         width: 15vw;
         height: auto;
         position: fixed;
@@ -52,11 +52,10 @@
         width: calc(79vw - 3.5vmin);
         bottom: 1vmin;
         height: calc(100vh - 14.5vmin);
-        border-radius: 3vmin 0 0 0 ;
+        border-radius: 3vmin 0 3vmin 0 ;
         transition: 0.5s; 
         z-index: 5;    
-        border: 1vmin solid black; 
-        cursor: ;       
+        border: 1vmin solid black;                 
     }
     #waldo-emoji {
         left: 3.5vw;
@@ -88,9 +87,10 @@
         border-left: 1vmin solid black;
         border-bottom: 1vmin solid black;
         transition: 700ms;
+        text-align: center;
     }
 
-    #animals {        
+    #animals {
         left: 2%;
     } 
     #faces {        
@@ -100,7 +100,8 @@
         left: 36%;                
     }
     #food {                
-        left: 54%;        
+        left: 54%;  
+        width: 8vmin;      
     }
     #travel {
         left: 72%;
@@ -111,6 +112,7 @@
         border-right: 1vmin solid black;
         border-left: 0;
         border-bottom: 0;
+        width: 8vmin;           
     }
 
 /*
@@ -134,43 +136,46 @@
     #meter { /* progress */
         position: fixed;
         left: 2.5vmin;
-        top: 30vh;
-        width: 17.5vw;
+        top: 40vh;
+        width: 18.5vw;
         height: 5.6vmin;
-        background-color: lightyellow;
-        overflow: hidden;
-        border-radius: 3vmin;
-        border: 1vmin solid black;
+        background-color: lightyellow;        
+        border-radius: 1vmin;
+        border: 0.6vmin solid black;
         transition: 0.5s;
-        z-index: 5;             
+        z-index: 5;  
+        overflow: hidden;
+                  
     }   
     #progress {
         /*display: block;        */
-        height: 6vmin;
+        height: 100%;               
         position: absolute;         
         background-color: #d6185e;                      
         width: 0%;
         transition: 1s;
+        border-radius: 0vmin 0.3vmin 0.3vmin 0vmin;
     }  
     .meter3 { /* countdown */
         position: fixed;
-        left: 16.5vw;
+        left: 17.5vw;
         top: 2.5vh;
         width: calc(2.5vmin + 1vw);
-        height: 25vh;
+        height: 35vh;
         background-color: lightyellow;
-        border-radius: 3vmin;
-        border: 1vmin solid black;
-        z-index: 3;                   
+        border-radius: 1vmin;
+        border: 0.6vmin solid black;
+        z-index: 3;   
+        overflow: hidden;                
     }   
     #countdown {    
         height: 100.0%;
-        width: 100%;
-        bottom: 0;
+        width: 100%;    
+        bottom: 0;                    
         position: absolute;        
         background-color: #ecbb19;
         transition: 1s;
-        border-radius: 2vmin;
+        border-radius: 0.3vmin;
 
     /*
         animation: progressbar 6s ease-in-out;
@@ -199,7 +204,7 @@
         position: fixed;        
         bottom: 2vh;
         width: 2.5vmin;
-        height: 50vh;
+        height: 35vh;
         background-color: lightyellow;                        
         transition: 0.0s;  
         left: 3vmin;   
@@ -216,7 +221,7 @@
         bottom: 0;
         width: 100%;
         background-color: #4c07bb;                                
-        transition: 3s;
+        transition: 2s;
         border-radius: 4px 4px 0px 0px;
         border-bottom: 2px solid grey;
     }                        
@@ -226,5 +231,13 @@
         left: 0vmax;
         top: 0vmax;
     }   
-   
+    #startBtn {
+        left: 77vmin;
+        top: 36vmin;
+        width: 13vmin;
+        position: absolute; 
+        border: 5px solid darkgreen; 
+        border-radius: 25vh;
+        cursor: pointer;      
+    }
                                                      
