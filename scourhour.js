@@ -85,6 +85,7 @@ class Emoji {
         emojiElem.style.position = this.position;
         emojiElem.style.zIndex = this.zIndex;
         emojiElem.style.transition = '3s';
+        emojiElem.style.cursor = 'url(images/magGlassCur.cur), auto)';
         setNonWaldo(emojiElem);        
         box.appendChild(emojiElem);
         return emojiElem;
@@ -158,6 +159,7 @@ function timerRunOut() {
     }
     document.getElementById('waldo-emoji').textContent = '';
     gameStarted = false;
+    box.style.cursor = 'auto';
     distanceFromLeft = 3;
     stressBarNumber = 0;
     setTimeout(function() {
@@ -184,7 +186,7 @@ function timerRunOut() {
 
 //set up events for non-waldo emojis
 function setNonWaldo(nonWaldo) {
-    nonWaldo.style.cursor = 'pointer'
+    //nonWaldo.style.cursor = 'pointer'
 
     nonWaldo.onclick = function(e) {
         setProgressBar(-10);
@@ -207,7 +209,7 @@ function setEmojiToFind(waldoEmoji) {
     emojiToFind.zIndex = '1';
     let elementToFind = emojiToFind.generate();
       
-    elementToFind.style.cursor = 'pointer';
+    //elementToFind.style.cursor = 'pointer';
     //$('html').off('mousemove');    
     
 
@@ -298,6 +300,7 @@ function setToStartScreen() {
     $('#startBtn').mousedown(function(event) {
         let btn = document.getElementById('startBtn');
         btn.style.border = '5px solid lightgreen'
+        box.style.cursor = 'url(images/magGlassCur.cur), auto';
     })
 
 }
@@ -522,6 +525,7 @@ $('#startBtn').mouseup(function(event) {
     let btn = document.getElementById('startBtn');    
     btn.remove();
     box.style.transition = '0.5s'
+    box.style.cursor = 'url(images/magGlassCur.cur), auto';
     clearInterval(bgChangeOnStart);    
     populatePage();
     startTimer();

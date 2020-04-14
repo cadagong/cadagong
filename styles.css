@@ -52,10 +52,10 @@
         width: calc(79vw - 3.5vmin);
         bottom: 1vmin;
         height: calc(100vh - 14.5vmin);
-        border-radius: 3vmin 0 0 0 ;
+        border-radius: 3vmin 0 3vmin 0 ;
         transition: 0.5s; 
         z-index: 5;    
-        border: 1vmin solid black;         
+        border: 1vmin solid black;                 
     }
     #waldo-emoji {
         left: 3.5vw;
