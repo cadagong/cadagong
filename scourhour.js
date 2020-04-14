@@ -55,6 +55,8 @@ box.style.backgroundColor = bgChange();
 
 let remainingTime = 100.01; //in percent
 
+let gameStarted = false;
+
 
 
 
@@ -132,7 +134,7 @@ function win() {
 function startTimer() {
     let countdown = setInterval( function(){ 
         setCountDownBar();
-        remainingTime = remainingTime - 5;
+        remainingTime = remainingTime - 3;
         //if timer runs out
         if(remainingTime <= 0) {  
             clearInterval(countdown);      
@@ -143,8 +145,7 @@ function startTimer() {
 
 
 function timerRunOut() {
-    progressBar.style.width = '0%';
-    //progressBar.style.setProperty('width', progressBarProgress + '%');  
+    progressBar.style.width = '0%';    
     progressBarProgress = 0;
     numberOfEmojis = 10;    
     let audio = document.getElementById("lose");
@@ -155,6 +156,8 @@ function timerRunOut() {
     while (document.getElementsByClassName('stress')[0]) {
         document.getElementsByClassName('stress')[0].remove();
     }
+    document.getElementById('waldo-emoji').textContent = '';
+    gameStarted = false;
     distanceFromLeft = 3;
     stressBarNumber = 0;
     setTimeout(function() {
@@ -290,6 +293,11 @@ function setToStartScreen() {
         document.getElementById('startBtn').remove();
         populatePage();
         startTimer();
+        gameStarted = true;
+    })
+    $('#startBtn').mousedown(function(event) {
+        let btn = document.getElementById('startBtn');
+        btn.style.border = '5px solid lightgreen'
     })
 
 }
@@ -319,37 +327,49 @@ function setToAnimalEmojis() {
     selectedEmojis = animalEmojis;
     unselectButton();
     selectButton("animals");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToFaceEmojis() {
     selectedEmojis = faceEmojis;
     unselectButton();
     selectButton("faces");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToClothesEmojis() {
     selectedEmojis = clothesEmojis;
     unselectButton();
     selectButton("clothes");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToFoodEmojis() {
     selectedEmojis = foodEmojis;
     unselectButton();
     selectButton("food");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToTravelEmojis() {
     selectedEmojis = travelEmojis;
     unselectButton();
     selectButton("travel");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 function setToAllEmojis() {
     selectedEmojis = emojis;
     unselectButton();
     selectButton("mystery");
-    resetPage();
+    if(gameStarted) {
+        resetPage();
+    }
 }
 
 
@@ -450,7 +470,6 @@ let i = 0;
 let sum = 0;
 // let stage = 0;
 let x1, y1, x2, y2, stress;
-let counter = 1;
 $('html').mousemove(function (event) {    
     console.log("hello",event);
     console.log( (new Date).getTime());
@@ -461,26 +480,26 @@ $('html').mousemove(function (event) {
         prevStress = 0;
     }
 
-    stress = 20*(Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.17))   ; 
+    stress = (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.80))   ;     
 
     i = i+1;
     if (i < 10) {
         sum += stress;
     }
     if (i >= 10) {
-        i = 0;
-        //optional stage - to be able to average the stress over a stage
+        i = 0;        
         output2stress = sum / 10;   
         
-        // stress = Math.pow(1.05, stress);
+        if(output2stress > 100) {
+            output2stress = 100;
+        }
+        
         setStressBar(output2stress, ('stress' + stressBarNumber));  
         sum = 0    
     }
  
-
     x1 = x2;
-    y1 = y2;  
-    counter += 1;        
+    y1 = y2;             
 });
 
 
@@ -493,11 +512,20 @@ let bgChangeOnStart = setInterval(function() {
 
 
 
+$('#startBtn').mousedown(function(event) {
+    let btn = document.getElementById('startBtn');
+    btn.style.border = '5px solid lightgreen'
+})
+
+
 $('#startBtn').mouseup(function(event) {
-    document.getElementById('startBtn').remove();
+    let btn = document.getElementById('startBtn');    
+    btn.remove();
     box.style.transition = '0.5s'
     clearInterval(bgChangeOnStart);    
     populatePage();
     startTimer();
-    
+    gameStarted = true;    
 })
+
+
