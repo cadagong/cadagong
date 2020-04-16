@@ -323,7 +323,8 @@ function setToStartScreen() {
     gameStarted = false;    
     box.style.cursor = 'auto';
     distanceFromLeft = 0.5; //for stress bars
-    stressBarNumber = 1;    
+    stressBarNumber = 1; 
+    sum = 0;   
 
     if(gameWin) { //game was won 
         gameWin = false;
@@ -551,6 +552,8 @@ function addStressBar() {
     };
     if (stressBarNumber === 2) {
     	output2stress = 50;
+    	setStressBar(output2stress, ('stress' + stressBarNumber)); 
+
     }
     let parent = document.getElementById("stressMeters");
     //new stress meter
@@ -585,12 +588,14 @@ function setCountDownBar() {
 //Mouse Tracking
 ////////////////
 
-
 let x1 = 1;
 let y1 = 1;
 let x2 = 1;
 let y2 = 1;
 let stress = 1;
+
+// let i = 0;
+
 $('html').mousemove(function (event) {     
     // i = i+1;           
     
@@ -607,7 +612,10 @@ $('html').mousemove(function (event) {
     if (sum )             
     // if(i > 1) )
 
-    output2stress = 50 + ( sum / norm ) * 100;
+    output2stress = 50 + ( sum / norm ) * 50;
+    if (stressBarNumber === 2 ) {
+    	output2stress = 100 * ( sum / norm );
+    }
 
     console.log(sum, output2stress);
     if(gameStarted) {
