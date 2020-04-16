@@ -58,8 +58,10 @@ let remainingTime = 100.01; //in percent
 let gameStarted = false;
 let gameWin = false;
 
-
-
+let i = 0;
+let sum  = 1;
+let norm = 50000;
+let output2stress = 1;
 ///////////////////////////////////////
 //Emoji Class to create Emoji instances
 ///////////////////////////////////////
@@ -241,7 +243,7 @@ function setEmojiToFind(waldoEmoji) {
     elementToFind.onclick = function(e) {
         setProgressBar(10);
         addStressBar();  
-        sum = 0; 
+        sum = 1; 
         i = 0;      
         remainingTime += 10;
         if(remainingTime >= 100.01) {
@@ -290,14 +292,14 @@ function populatePage() {
     setEmojiToFind(waldoEmoji);
 
     //remove emoji to be found from emojis array
-    for (let i = 0; i < selectedEmojis.length; i++) {
-        if (waldoEmoji.emoji == selectedEmojis[i]) {
-            selectedEmojis.splice(i, 1);
+    for (let j = 0; j < selectedEmojis.length; j++) {
+        if (waldoEmoji.emoji == selectedEmojis[j]) {
+            selectedEmojis.splice(j, 1);
         }
     }
     //generate emojis from remaining emojis 
     //not including the emoji to be
-    for (let i = 0; i < numberOfEmojis; i++) {
+    for (let j = 0; j < numberOfEmojis; j++) {
         let emoji = new Emoji();
         emoji.generate();
     }
@@ -531,12 +533,12 @@ function setProgressBar(num) {
 
 
 //updates stress bar
-let prevStress;
+// let prevStress;
 let stressBarNumber = 1;
 function setStressBar(stress, barId) { 
     let stressBar = document.getElementById(barId);      
-    stressBar.style.setProperty('height', (stress) +"%");    
-    prevStress += stress;        
+    stressBar.style.setProperty('height', (output2stress) +"%");    
+    // prevStress += stress;        
 }
 
 
@@ -544,6 +546,12 @@ let distanceFromLeft = 0.5;
 //adds a new stress bar
 function addStressBar() {
     stressBarNumber += 1;
+    if (stressBarNumber === 3) {
+    	norm = sum + 1; 
+    };
+    if (stressBarNumber === 2) {
+    	output2stress = 50;
+    }
     let parent = document.getElementById("stressMeters");
     //new stress meter
     let newBar = document.createElement("div");
@@ -577,26 +585,35 @@ function setCountDownBar() {
 //Mouse Tracking
 ////////////////
 
-let i = 0;
-let sum  = 0;
-let norm = 500;
-let x1, y1, x2, y2, stress;
+
+let x1 = 1;
+let y1 = 1;
+let x2 = 1;
+let y2 = 1;
+let stress = 1;
 $('html').mousemove(function (event) {     
-    i = i+1;           
+    // i = i+1;           
+    
     var x2 = event.clientX;
     var y2 = event.clientY;   
-    if(prevStress == null) prevStress = 0;        
-
-    stress = (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5));        
-        
-    if(i > 1) sum += stress;     
-    console.log(sum);
-           
-    output2stress = (sum/(norm*10))*100;               
-    if(gameStarted) {
-        setStressBar(output2stress, ('stress' + stressBarNumber));                     
+    
+    if (x2 === undefined) {
+    	x2 = 1;
+    	y2 = 1;
     }
- 
+
+    // if(prevStress == null) {prevStress = 0}; 
+    sum += Math.pow ( Math.pow ( x2 - x1 , 2 ) + Math.pow ( y2 - y1 , 2 ) , 0.5 );   
+    if (sum )             
+    // if(i > 1) )
+
+    output2stress = 50 + ( sum / norm ) * 100;
+
+    console.log(sum, output2stress);
+    if(gameStarted) {
+        setStressBar(output2stress, ('stress' + stressBarNumber)); 
+               
+    }
     x1 = x2;
     y1 = y2;             
 });
