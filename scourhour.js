@@ -321,7 +321,8 @@ function setToStartScreen() {
     gameStarted = false;    
     box.style.cursor = 'auto';
     distanceFromLeft = 0.5; //for stress bars
-    stressBarNumber = 1;    
+    stressBarNumber = 1; 
+    sum = 0;   
 
     if(gameWin) { //game was won 
         gameWin = false;
@@ -580,7 +581,7 @@ function setCountDownBar() {
 let i = 0;
 let sum  = 0;
 let norm = 500;
-let x1, y1, x2, y2, stress;
+let x1, y1, x2, y2, stress, output2stress;
 $('html').mousemove(function (event) {     
     i = i+1;           
     var x2 = event.clientX;
