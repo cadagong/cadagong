@@ -62,7 +62,7 @@ let gameWin = false;
 //global variables needed for setting stress bars stress levels
 let i = 0;
 let sum  = 1;
-let norm = 50000;
+let norm = 5000;
 let output2stress = 1;
 ///////////////////////////////////////
 //Emoji Class to create Emoji instances
@@ -243,8 +243,17 @@ function setEmojiToFind(waldoEmoji) {
 
     //define onclick event when "waldo" is found
     elementToFind.onclick = function(e) {
+    	console.log("clickedon");
+
+        if (stressBarNumber === 1) {
+        	norm = sum ; 
+        	// fifty = 50;
+        	setStressBar(50, ('stress' + stressBarNumber));  
+        	// console.log("set to 50", fifty);
+    	};   
+
         setProgressBar(10);
-        addStressBar();  
+        addStressBar();
         sum = 1; 
         i = 0;      
         remainingTime += 10;
@@ -539,7 +548,7 @@ function setProgressBar(num) {
 let stressBarNumber = 0;
 function setStressBar(stress, barId) { 
     let stressBar = document.getElementById(barId);      
-    stressBar.style.setProperty('height', (output2stress) +"%");    
+    stressBar.style.setProperty('height', (stress) +"%");    
     // prevStress += stress;        
 }
 
@@ -548,11 +557,7 @@ let distanceFromLeft = 0.5;
 //adds a new stress bar
 function addStressBar() {
 
-    stressBarNumber += 1; 
-
-    if (stressBarNumber === 3) {
-    	norm = sum + 1; 
-    };     
+    stressBarNumber += 1;   
 
     let parent = document.getElementById("stressMeters");
     //new stress meter
@@ -567,7 +572,7 @@ function addStressBar() {
     parent = newBar;
     let newStressLevel = document.createElement("span");
     newStressLevel.id = 'stress' + stressBarNumber;
-    console.log(stressBarNumber);
+    console.log("stressbar#", stressBarNumber, output2stress);
     newStressLevel.className = 'stress';
     newStressLevel.style.backgroundColor = bgChange();
     parent.append(newStressLevel);    
@@ -598,20 +603,21 @@ $('html').mousemove(function (event) {
     var y2 = event.clientY;   
     
     if (x2 === undefined) {
-    	x2 = 1;
-    	y2 = 1;
+    	x2 = x1;
+    	y2 = x2;
     }
     
     sum += Math.pow ( Math.pow ( x2 - x1 , 2 ) + Math.pow ( y2 - y1 , 2 ) , 0.5 );   
-
-    output2stress = 50 + ( sum / norm ) * 50;
-    if (stressBarNumber == 2 ) {
+    // output2stress = 100 * ( sum / norm );
+    output2stress = 50 + ( ( sum - norm ) / norm ) * 50;
+    if (stressBarNumber === 1 || output2stress === 0 ) {
     	output2stress = 100 * ( sum / norm );
+    	console.log("scientific answer");
     }
 
     //console.log(sum, output2stress);
     if(gameStarted) {
-        console.log(stressBarNumber);
+        console.log("stress updated bar#", stressBarNumber, output2stress);
         setStressBar(output2stress, ('stress' + stressBarNumber)); 
                
     }
