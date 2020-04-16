@@ -58,6 +58,8 @@ let remainingTime = 100.01; //in percent
 let gameStarted = false;
 let gameWin = false;
 
+
+//global variables needed for setting stress bars stress levels
 let i = 0;
 let sum  = 1;
 let norm = 50000;
@@ -534,8 +536,7 @@ function setProgressBar(num) {
 
 
 //updates stress bar
-// let prevStress;
-let stressBarNumber = 1;
+let stressBarNumber = 0;
 function setStressBar(stress, barId) { 
     let stressBar = document.getElementById(barId);      
     stressBar.style.setProperty('height', (output2stress) +"%");    
@@ -546,15 +547,13 @@ function setStressBar(stress, barId) {
 let distanceFromLeft = 0.5;
 //adds a new stress bar
 function addStressBar() {
-    stressBarNumber += 1;
+
+    stressBarNumber += 1; 
+
     if (stressBarNumber === 3) {
     	norm = sum + 1; 
-    };
-    if (stressBarNumber === 2) {
-    	output2stress = 50;
-    	setStressBar(output2stress, ('stress' + stressBarNumber)); 
+    };     
 
-    }
     let parent = document.getElementById("stressMeters");
     //new stress meter
     let newBar = document.createElement("div");
@@ -568,9 +567,10 @@ function addStressBar() {
     parent = newBar;
     let newStressLevel = document.createElement("span");
     newStressLevel.id = 'stress' + stressBarNumber;
+    console.log(stressBarNumber);
     newStressLevel.className = 'stress';
     newStressLevel.style.backgroundColor = bgChange();
-    parent.append(newStressLevel);
+    parent.append(newStressLevel);    
 }
 
 
@@ -593,12 +593,7 @@ let y1 = 1;
 let x2 = 1;
 let y2 = 1;
 let stress = 1;
-
-// let i = 0;
-
-$('html').mousemove(function (event) {     
-    // i = i+1;           
-    
+$('html').mousemove(function (event) {                   
     var x2 = event.clientX;
     var y2 = event.clientY;   
     
@@ -606,19 +601,17 @@ $('html').mousemove(function (event) {
     	x2 = 1;
     	y2 = 1;
     }
-
-    // if(prevStress == null) {prevStress = 0}; 
+    
     sum += Math.pow ( Math.pow ( x2 - x1 , 2 ) + Math.pow ( y2 - y1 , 2 ) , 0.5 );   
-    if (sum )             
-    // if(i > 1) )
 
     output2stress = 50 + ( sum / norm ) * 50;
-    if (stressBarNumber === 2 ) {
+    if (stressBarNumber == 2 ) {
     	output2stress = 100 * ( sum / norm );
     }
 
-    console.log(sum, output2stress);
+    //console.log(sum, output2stress);
     if(gameStarted) {
+        console.log(stressBarNumber);
         setStressBar(output2stress, ('stress' + stressBarNumber)); 
                
     }
