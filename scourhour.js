@@ -62,7 +62,7 @@ let gameWin = false;
 //global variables needed for setting stress bars stress levels
 let i = 0;
 let sum  = 1;
-let norm = 120;
+let norm = 50;
 let output2stress = 1;
 ///////////////////////////////////////
 //Emoji Class to create Emoji instances
@@ -607,7 +607,7 @@ $('html').mousemove(function (event) {
     	y2 = x2;
     }
     
-    sum += Math.pow ( Math.pow ( x2 - x1 , 2 ) + Math.pow ( y2 - y1 , 2 ) , 0.5 );   
+    sum += Math.pow ( Math.pow ( x2 - x1 , 2 ) + Math.pow ( y2 - y1 , 2 ) , 0.25 );   
     // output2stress = 100 * ( sum / norm );
     output2stress = 50 + ( ( sum - norm ) / norm ) * 50;
     if (stressBarNumber === 1 || output2stress === 0 ) {
