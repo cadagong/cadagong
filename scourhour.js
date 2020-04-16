@@ -14,24 +14,24 @@ let faceEmojis = ['😀', '😁','😬', '😰', '😱', '🥵', '🥶', '😳',
 ];
 
 let clothesEmojis = ['🧥', '👚', '👕','👖', '👔', '👗', '👙', '👘', '👠', '👡', 
-'👢', '👞', '👟', '🥾', '🥿', '🧦', '🧤', '🧣', '🎩','🧢', '👒', '🎓', '⛑', '👑', '👝', 
+'👢', '👞', '👟', '🥾', '🥿', '🧦', '🧤', '🧣', '🎩','🧢', '👒', '🎓', '👑', '👝', 
 '👛', '👜', '💼', '🎒', '👓', '🕶', '🥽', '🥼', '🌂', '🧵', '🧶'
 ];
 
 let foodEmojis = ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥭','🥥',
-    '🥝','🍅','🍆','🥑','🥦','🥒','🥬','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🥯','🧀','🥚',
+    '🥝','🍅','🍆','🥑','🥦','🥒','🥬','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🥯','🧀','🥚',
     '🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🌮','🌯','🥗','🥘','🥫','🍝','🍜',
     '🍲','🍛','🍣','🍱','🥟','🍤','🍙','🍚','🍘','🍥','🥮','🥠','🍢','🍡','🍧','🍨','🍦','🥧','🍰',
     '🎂','🍮','🍭','🍬','🍫','🍿','🧂','🍩','🍪','🌰','🥜','🍯','🥛','🍼','☕️','🍵','🥤','🍶','🍺','🍻',
-    '🥂','🍷','🥃','🍸','🍹','🍾','🥄','🍴','🍽','🥣','🥡','🥢'
+    '🥂','🍷','🥃','🍸','🍹','🍾','🥄','🍴','🥣','🥡','🥢'
 ];
 
 let travelEmojis = [ '🚗','🚕','🚙','🚌','🚎','🏎','🚓','🚑','🚒','🚐','🚚','🚛','🚜','🛴','🚲','🛵',
 '🏍','🚨','🚔','🚍','🚘','🚖','🚡','🚠','🚟','🚃','🚋','🚞','🚝','🚄','🚅','🚈','🚂','🚆','🚇','🚊',
-'🚉','✈️','🛫','🛬','🛩','💺','🛰','🚀','🛸','🚁','🛶','⛵️','🚤','🛥','🛳','⛴','🚢','⚓️','⛽️','🚧','🚦',
-'🚥','🚏','🗺','🗿','🗽','🗼','🏰','🏯','🏟','🎡','🎢','🎠','⛲️','⛱','🏖','🏝','🏜','🌋','⛰','🏔','🗻',
-'🏕','⛺️','🏠','🏡','🏘','🏚','🏗','🏭','🏢','🏬','🏣','🏤','🏥','🏦','🏨','🏪','🏫','🏩','💒','🏛',
-'⛪️','🕌','🕍','🕋','⛩','🛤','🛣','🗾','🎑','🏞','🌅','🌄','🌠','🎇','🎆','🌇','🌆','🏙','🌃','🌌','🌉','🌁'    
+'🚉','✈️','🛫','🛬','🛩','💺','🚀','🛸','🚁','🛶','⛵️','🚤','🛳','⛴','🚢','⚓️','⛽️','🚧','🚦',
+'🚥','🚏','🗿','🗽','🗼','🏰','🏯','🎡','🎢','🎠','⛲️','🏝','🏜','🌋','🗻','🏙','🌃','🌌','🌉','🌁',    
+'🏕','⛺️','🏠','🏡','🏚','🏗','🏭','🏢','🏬','🏣','🏤','🏥','🏦','🏨','🏪','🏫','🏩','💒','🏛',
+'⛪️','🕌','🕍','🕋','🗾','🎑','🏞','🌅','🌄','🌠','🎇','🎆','🌇','🌆'
 ];
 
 let emojis = animalEmojis.concat(faceEmojis.concat(clothesEmojis.concat(foodEmojis.concat(travelEmojis))));
@@ -240,7 +240,9 @@ function setEmojiToFind(waldoEmoji) {
     //define onclick event when "waldo" is found
     elementToFind.onclick = function(e) {
         setProgressBar(10);
-        addStressBar();        
+        addStressBar();  
+        sum = 0; 
+        i = 0;      
         remainingTime += 10;
         if(remainingTime >= 100.01) {
             remainingTime = 100.01;
@@ -319,7 +321,7 @@ function setToStartScreen() {
     gameStarted = false;    
     box.style.cursor = 'auto';
     distanceFromLeft = 0.5; //for stress bars
-    stressBarNumber = 0;    
+    stressBarNumber = 1;    
 
     if(gameWin) { //game was won 
         gameWin = false;
@@ -405,6 +407,7 @@ function setToStartScreen() {
             clearInterval(contBgChange);    
             populatePage();
             startTimer();
+            addStressBar();
             gameStarted = true;    
         })
     }      
@@ -575,25 +578,23 @@ function setCountDownBar() {
 ////////////////
 
 let i = 0;
-let sum = 0;
-// let stage = 0;
+let sum  = 0;
+let norm = 500;
 let x1, y1, x2, y2, stress;
-$('html').mousemove(function (event) { 
+$('html').mousemove(function (event) {     
     i = i+1;           
     var x2 = event.clientX;
     var y2 = event.clientY;   
-    if(prevStress == null) prevStress = 0;    
-    stress =  20 * (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.30))   ;    
-    if (i < 10) sum += stress;
-    
-    if (i >= 10) {
-        i = 0;        
-        output2stress = sum / 10;           
-        if(output2stress > 100) output2stress = 100;
-        if(gameStarted) {
-            setStressBar(output2stress, ('stress' + stressBarNumber));  
-        }
-        sum = 0    
+    if(prevStress == null) prevStress = 0;        
+
+    stress = (Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5));        
+        
+    if(i > 1) sum += stress;     
+    console.log(sum);
+           
+    output2stress = (sum/(norm*10))*100;               
+    if(gameStarted) {
+        setStressBar(output2stress, ('stress' + stressBarNumber));                     
     }
  
     x1 = x2;
@@ -601,6 +602,19 @@ $('html').mousemove(function (event) {
 });
 
 
+/*
+sum += stress
+sum the distances, restart no new stage
+example: (variable - first sum normalized - 1/100)
+first sum = 9000
+stress level  = 90 -> onclick. normalize to 50 (new factor = 1/180)
+second sum = 5000
+ratio = n(sum)/(n1)(sum) = 5000/9000 = 5/9 -> 5/9*50 ||| (5/9)^3 / ((5/9)^2 -1)
+third sum = 11200
+ratio = 112/90 -> 112/90 * 50
+normaliz first to 50% -> output normalization factor
+normalizefor every step
+*/
 
 //when page is first loaded, background will continuously change color
 let contBgChange = setInterval(function() {
